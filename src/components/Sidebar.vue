@@ -1,39 +1,29 @@
 <template>
-  <div>
-    <el-row class="tac">
-      <el-col :span="4">
-        <el-menu
-          class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
-          background-color="#545c64"
-          text-color="#fff"
-          active-text-color="#ffd04b">
-          <el-submenu index="1">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>导航一</span>
-            </template>
-            <el-menu-item-group>
-              <template slot="title">分组一</template>
-              <el-menu-item index="1-1">选项1</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="分组2">
-              <el-menu-item index="1-3">选项3</el-menu-item>
-            </el-menu-item-group>
-            <el-submenu index="1-4">
-              <template slot="title">选项4</template>
-              <el-menu-item index="1-4-1">选项1</el-menu-item>
-            </el-submenu>
-          </el-submenu>
-          <el-menu-item index="2">
-            <i class="el-icon-menu"></i>
-            <span slot="title">导航二</span>
-          </el-menu-item>
-        </el-menu>
-      </el-col>
-    </el-row>
+  <div class="container">
+      <el-menu
+        default-active="0"
+        class="el-menu-vertical-demo"
+        @open="handleOpen"
+        @close="handleClose"
+        background-color="#545c64"
+        text-color="#fff"
+        active-text-color="#ffd04b">
+          <router-link to="/PersonalInformation">
+            <el-menu-item index="1">
+              <span slot="title" style="float: left;">个人信息</span>
+            </el-menu-item>
+          </router-link>
+          <router-link to="/SelectCourse">
+            <el-menu-item index="2">
+              <span slot="title" style="float: left;">选课</span>
+            </el-menu-item>
+          </router-link>
+          <router-link to="/Transcript">
+            <el-menu-item index="3">
+              <span slot="title" style="float: left;">成绩单</span>
+            </el-menu-item>
+          </router-link>
+      </el-menu>
   </div>
 </template>
 
@@ -57,5 +47,13 @@
 </script>
 
 <style scoped>
+  .container {
+    height: 600px;
+    width: 15%;
 
+  }
+
+  .el-menu-vertical-demo {
+    height: 100%;
+  }
 </style>

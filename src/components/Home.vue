@@ -1,13 +1,13 @@
 <template>
   <div class="home-container">
-    <Navigation></Navigation>
-    <div>
-      <div>
-        <Sidebar></Sidebar>
-      </div>
-      <div>
-        <router-view></router-view>
-      </div>
+    <Navigation class="nav-screen"></Navigation>
+    <div class="full-screen">
+          <div>
+            <Sidebar class="sidebar-screen"></Sidebar>
+          </div>
+          <div>
+            <router-view class="router-view"></router-view>
+          </div>
     </div>
   </div>
 </template>
@@ -23,8 +23,31 @@
 </script>
 
 <style scoped>
-  .home-container{
+  .home-container {
     height: 100%;
-    width: 100%;
   }
+
+  .nav-screen {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    z-index: 99;
+  }
+
+  .full-screen {
+    height: auto;
+  }
+
+  .sidebar-screen{
+    top: 60px;
+    left: 0;
+    position: fixed;
+  }
+
+  .router-view{
+    position: fixed;
+    top: 60px;
+    left: 200px;
+  }
+
 </style>
