@@ -42,7 +42,7 @@
             studentId: '17123079',
             age: '18',
             sex: '女',
-            department: '计算机学院',
+            department: '计算机工程与科学学院',
           }
         },
         methods:{
