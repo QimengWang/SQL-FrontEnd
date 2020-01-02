@@ -40,7 +40,6 @@
 
   .sidebar-screen{
     top: 60px;
-    left: 0;
     position: fixed;
   }
 

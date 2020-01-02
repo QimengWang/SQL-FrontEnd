@@ -1,6 +1,4 @@
 <template>
-<!--  <h>这里是个人信息界面</h>-->
-  <div>
     <div class="container">
       <el-form :label-position="labelPosition" :model="studInfo" label-width="80px">
         <el-form-item label="学号:">
@@ -30,13 +28,12 @@
         </el-form-item>
       </el-form>
     </div>
-  </div>
 
 
 </template>
 
 <script>
-  import {getStudInfo} from "../api/api";
+  //import {getStudInfo} from "../api/api";
 
     export default {
         name: "PersonalInformation",
@@ -57,7 +54,7 @@
 
         },
       async mounted() {
-          this.studInfo = (await getStudInfo());
+          //this.studInfo = (await getStudInfo());
       }
     }
 </script>
@@ -65,5 +62,6 @@
 <style scoped>
   .container {
     margin-top: 30px;
+    margin-left: 30px;
   }
 </style>
