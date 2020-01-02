@@ -48,8 +48,8 @@
 
 <style scoped>
   .container {
-    height: 600px;
-    width: 15%;
+    height: 100%;
+    width: 200px;
 
   }
 

@@ -35,11 +35,12 @@
   }
 
   .full-screen {
-    height: auto;
+    width: 100%;
   }
 
   .sidebar-screen{
     top: 60px;
+    left: 0;
     position: fixed;
   }
 
