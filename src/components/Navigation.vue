@@ -10,7 +10,7 @@
       active-text-color="#ffd04b">
       <el-menu-item index="1">学生选课成绩管理系统</el-menu-item>
       <el-menu-item index="2" style="float: right">注销</el-menu-item>
-      <el-menu-item index="3" style="float: right">
+      <el-menu-item index="3" style="float: right" @click="drawer = true">
         <span>{{stuName}}</span>
       </el-menu-item>
     </el-menu>
