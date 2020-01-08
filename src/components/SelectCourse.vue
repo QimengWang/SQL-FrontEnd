@@ -18,8 +18,15 @@
           </el-form-item>
           <el-form-item>
             <el-table
+              ref="multipleTable"
               :data="availableCourse"
-              style="width: 100%">
+              tooltip-effect="dark"
+              style="width: 100%"
+              @selection-change="handleSelectionChange">
+              <el-table-column
+                type="selection"
+                width="55">
+              </el-table-column>
               <el-table-column
                 prop="kh"
                 label="课程号"
@@ -48,6 +55,7 @@
             </el-table>
           </el-form-item>
         </el-form>
+        <el-button type="primary" @click="multipleSelectionConfirm">确定</el-button>
       </div>
 
       <div class="tableCon">
@@ -123,7 +131,9 @@
               xf: '4',
               department: '计算机学院',
               teacher: '孙慧玥'
-            }]
+            }],
+
+            multipleSelection: []
           }
 
       },
@@ -131,6 +141,12 @@
         async selectConfirm(){
 
         },
+        handleSelectionChange(val) {
+          this.multipleSelection = val;
+        },
+        async multipleSelectionConfirm() {
+
+        }
 
       },
       async mounted () {
@@ -150,5 +166,6 @@
     margin-top: 30px;
     text-align: left;
     margin-left: 30px;
+    width: 64%;
   }
 </style>
