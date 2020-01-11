@@ -31,9 +31,6 @@
         name: "Transcript",
     data () {
           return {
-            bookInfo:[{
-
-            }],
 
           }
         },
