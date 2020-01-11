@@ -3,27 +3,27 @@
       <el-form :label-position="labelPosition" :model="studInfo" label-width="80px">
         <el-form-item label="学号:">
           <el-card shadow="hover" style="width: 300px; height: 50px;">
-            {{studInfo.studId}}
+            {{studInfo.xh}}
           </el-card>
         </el-form-item>
         <el-form-item label="姓名:">
           <el-card shadow="hover" style="width: 300px; height: 50px;">
-            {{studInfo.studName}}
+            {{studInfo.xm}}
           </el-card>
         </el-form-item>
         <el-form-item label="年龄:">
           <el-card shadow="hover" style="width: 300px; height: 50px;">
-            {{studInfo.age}}
+            {{studInfo.nl}}
           </el-card>
         </el-form-item>
         <el-form-item label="性别:">
           <el-card shadow="hover" style="width: 300px; height: 50px;">
-            {{studInfo.sex}}
+            {{studInfo.xb}}
           </el-card>
         </el-form-item>
         <el-form-item label="所在院系:">
           <el-card shadow="hover" style="width: 300px; height: 50px;">
-            {{studInfo.department}}
+            {{studInfo.yx}}
           </el-card>
         </el-form-item>
       </el-form>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-  //import {getStudInfo} from "../api/api";
+  import {personalInfo} from "../api/api";
 
     export default {
         name: "PersonalInformation",
@@ -41,20 +41,24 @@
           return {
             labelPosition: 'right',
             studInfo: {
-              studName: 'Wqm',
-              studId: '17123079',
-              age: '18',
-              sex: '女',
-              department: '计算机工程与科学学院',
+              xm: 'Wqm',
+              xh: '17123079',
+              nl: '18',
+              xb: '女',
+              yx: '计算机工程与科学学院',
             },
 
           }
         },
         methods:{
+          async getData() {
+            let data = (await personalInfo()).data.retlist;
+            this.studInfo=data;
+          }
 
         },
       async mounted() {
-          //this.studInfo = (await getStudInfo());
+          this.getData();
       }
     }
 </script>
