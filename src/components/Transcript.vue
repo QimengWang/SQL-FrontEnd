@@ -1,24 +1,6 @@
 <template>
   <div>
-    <h1>?????</h1>
-
-    <div class="tableCon">
-          <el-table
-            :data="bookInfo"
-            style="width: 100%">
-            <el-table-column
-              prop="book_name"
-              label="书名"
-              width="150">
-            </el-table-column>
-            <el-table-column
-              prop="add_time"
-              label="添加时间"
-              width="150">
-            </el-table-column>
-          </el-table>
-    </div>
-
+    <h1>这里是成绩单界面</h1>
   </div>
 
 
