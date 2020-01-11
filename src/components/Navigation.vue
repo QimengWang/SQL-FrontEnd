@@ -5,7 +5,7 @@
       class="el-menu-demo"
       mode="horizontal"
       @select="handleSelect"
-      background-color="#409EFF"
+      background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
       <el-menu-item index="1">学生选课成绩管理系统</el-menu-item>
