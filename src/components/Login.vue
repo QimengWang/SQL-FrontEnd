@@ -40,10 +40,17 @@
       },
       methods: {
           async login(){
-            let flag = (await login(this.stu)).data.ret;
+            let flag = (await login(this.stu)).data;
             console.log(flag);
-            if (flag == 0) {
+            if (flag.ret === 0) {
               window.open('http://localhost:8080/#/Home','_self');
+            }
+            if(flag.ret === 1) {
+              console.log(flag.msg);
+              this.$Notice.error({
+                title: flag.msg,
+                duration: 2,
+              });
             }
           }
 
