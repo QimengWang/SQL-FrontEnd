@@ -52,7 +52,7 @@
         },
         methods:{
           async getData() {
-            let data = (await personalInfo()).data.retlist;
+            let data = (await personalInfo()).data;
             this.studInfo=data;
           }
 

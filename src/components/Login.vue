@@ -7,10 +7,10 @@
         </div>
           <el-form :model="stu" style="font-weight: bold">
             <el-form-item label="学号:" style="display: inline;">
-              <el-input style="width: 300px" v-model="stu.xh"></el-input>
+              <el-input style="width: 300px" v-model="stu.id"></el-input>
             </el-form-item>
             <el-form-item label="密码:">
-              <el-input style="width: 300px" v-model="stu.mm"></el-input>
+              <el-input style="width: 300px" v-model="stu.password"></el-input>
             </el-form-item>
             <el-form-item>
               <el-button @click="login" type="info" style="width: 300px; background-color: #545c64; font-weight: bold">
@@ -25,20 +25,26 @@
 </template>
 
 <script>
+  import {login} from "../api/api";
+
     export default {
         name: "Login",
       data(){
           return {
             stu: {
-              xh:'',
-              mm:'',
+              id:'',
+              password:'',
             }
 
         }
       },
       methods: {
           async login(){
-            window.open('http://localhost:8080/#/Home','_self');
+            let flag = (await login(this.stu)).data.ret;
+            console.log(flag);
+            if (flag == 0) {
+              window.open('http://localhost:8080/#/Home','_self');
+            }
           }
 
       },
