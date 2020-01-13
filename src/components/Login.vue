@@ -2,22 +2,44 @@
   <div class="container">
     <div style="margin-top: 9%; margin-left: 35%">
       <el-card class="box-card">
+
         <div style="margin-top: 3%; font-weight: bold; font-size: 23px;">
           <span>登 录</span>
         </div>
-          <el-form :model="stu" style="font-weight: bold">
-            <el-form-item label="学号:" style="display: inline;">
-              <el-input placeholder="请输入学号" style="width: 310px" v-model="stu.id"></el-input>
-            </el-form-item>
-            <el-form-item label="密码:">
-              <el-input placeholder="请输入密码" style="width: 310px" v-model="stu.password" show-password></el-input>
-            </el-form-item>
-            <el-form-item>
-              <el-button @click="login" type="info" style="width: 310px; background-color: #545c64; font-weight: bold">
-                确认
-              </el-button>
-            </el-form-item>
-          </el-form>
+
+        <Tabs value="student" style="margin-top: 8px;" :animated="false">
+          <TabPane label="学生" name="student">
+            <el-form :model="stu" style="font-weight: bold;">
+              <el-form-item label="学号：" style="display: inline">
+                <el-input placeholder="请输入学号" style="width: 300px;" v-model="stu.id"></el-input>
+              </el-form-item>
+              <el-form-item label="密码:">
+                <el-input placeholder="请输入密码" style="width: 300px;" v-model="stu.password" show-password></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button @click="stuLogin" type="info" style="width: 300px; background-color: #545c64; font-weight: bold;">
+                  确认
+                </el-button>
+              </el-form-item>
+            </el-form>
+          </TabPane>
+          <TabPane label="教师" name="teacher">
+            <el-form :model="tea" style="font-weight: bold;">
+              <el-form-item label="工号：" style="display: inline">
+                <el-input placeholder="请输入工号" style="width: 300px;" v-model="tea.id"></el-input>
+              </el-form-item>
+              <el-form-item label="密码:">
+                <el-input placeholder="请输入密码" style="width: 300px;" v-model="tea.password" show-password></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button @click="teaLogin" type="info" style="width: 300px; background-color: #545c64; font-weight: bold;">
+                  确认
+                </el-button>
+              </el-form-item>
+            </el-form>
+          </TabPane>
+        </Tabs>
+
       </el-card>
     </div>
   </div>
@@ -25,7 +47,7 @@
 </template>
 
 <script>
-  import {login} from "../api/api";
+  import {stuLogin} from "../api/api";
 
     export default {
         name: "Login",
@@ -34,13 +56,17 @@
             stu: {
               id:'',
               password:'',
-            }
+            },
+            tea: {
+              id:'',
+              password:'',
+            },
 
         }
       },
       methods: {
-          async login(){
-            let flag = (await login(this.stu)).data;
+          async stuLogin(){
+            let flag = (await stuLogin(this.stu)).data;
             console.log(flag);
             if (flag.ret === 0) {
               window.open('http://localhost:8080/#/Home','_self');
@@ -52,7 +78,13 @@
                 duration: 2,
               });
             }
-          }
+          },
+        async teaLogin(){
+          this.$Notice.error({
+            title: '功能待开发!',
+            duration: 2,
+          });
+        }
 
       },
       async mounted() {
