@@ -7,13 +7,13 @@
         </div>
           <el-form :model="stu" style="font-weight: bold">
             <el-form-item label="学号:" style="display: inline;">
-              <el-input style="width: 300px" v-model="stu.id"></el-input>
+              <el-input placeholder="请输入学号" style="width: 310px" v-model="stu.id"></el-input>
             </el-form-item>
             <el-form-item label="密码:">
-              <el-input style="width: 300px" v-model="stu.password"></el-input>
+              <el-input placeholder="请输入密码" style="width: 310px" v-model="stu.password" show-password></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button @click="login" type="info" style="width: 300px; background-color: #545c64; font-weight: bold">
+              <el-button @click="login" type="info" style="width: 310px; background-color: #545c64; font-weight: bold">
                 确认
               </el-button>
             </el-form-item>
