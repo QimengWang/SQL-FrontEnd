@@ -73,17 +73,25 @@
       },
       methods: {
           async stuLogin(){
-            let flag = (await stuLogin(this.stu)).data;
-            console.log(flag);
-            if (flag.ret === 0) {
-              window.open('http://localhost:8080/#/Home','_self');
-            }
-            if(flag.ret === 1) {
-              console.log(flag.msg);
+            if(this.stu.id === '' || this.stu.password === ''){
               this.$Notice.error({
-                title: flag.msg,
+                title: '学号或密码不能为空！',
                 duration: 2,
               });
+            }
+            else{
+              let flag = (await stuLogin(this.stu)).data;
+              console.log(flag);
+              if (flag.ret === 0) {
+                window.open('http://localhost:8080/#/Home','_self');
+              }
+              if(flag.ret === 1) {
+                console.log(flag.msg);
+                this.$Notice.error({
+                  title: flag.msg,
+                  duration: 2,
+                });
+              }
             }
           },
         async teaLogin(){
