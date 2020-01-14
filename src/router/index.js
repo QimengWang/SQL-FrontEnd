@@ -1,21 +1,31 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Home from '../components/Home'
-import Login from '../components/Login'
+import Home from '../components/Home';
+import Login from '../components/Login';
 import SelectCourse from "../components/SelectCourse";
-import PersonalInformation from "../components/PersonalInformation"
+import PersonalInformation from "../components/PersonalInformation";
 import Transcript from "../components/Transcript";
+
+import tHome from '../components/tHome';
+import tPersonalInformation from '../components/tPersonalInformation';
+import StudentManagement from '../components/StudentManagement';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
+      path: '/',
+      name: 'Login',
+      component: Login
+    },
+    {
       path: '/Home',
       name: 'Home',
       component: Home,
       children: [
+        // for student:
         {
           path: '/SelectCourse',
           name: 'SelectCourse',
@@ -33,10 +43,23 @@ export default new Router({
         }
       ]
     },
+    // for teacher:
     {
-      path: '/',
-      name: 'Login',
-      component: Login
-    }
+      path: '/tHome',
+      name: 'tHome',
+      component: tHome,
+      children: [
+        {
+          path: '/tPersonalInformation',
+          name: 'tPersonalInformation',
+          component: tPersonalInformation
+        },
+        {
+          path: '/StudentManagement',
+          name: 'StudentManagement',
+          component: StudentManagement
+        }
+      ]
+    },
   ]
 })

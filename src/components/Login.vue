@@ -105,7 +105,7 @@
             let d = (await teaLogin(this.tea)).data;
             console.log(d);
             if (d.ret === 0) {
-              window.open('http://localhost:8080/#/Home','_self');
+              window.open('http://localhost:8080/#/tHome','_self');
             }
             if(d.ret === 1) {
               console.log(d.msg);
