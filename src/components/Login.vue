@@ -54,7 +54,7 @@
 </template>
 
 <script>
-  import {stuLogin} from "../api/api";
+  import {stuLogin, teaLogin} from "../api/api";
 
     export default {
         name: "Login",
@@ -95,11 +95,27 @@
             }
           },
         async teaLogin(){
-          this.$Notice.error({
-            title: '功能待开发!',
-            duration: 2,
-          });
-        }
+          if(this.tea.id === '' || this.tea.password === ''){
+            this.$Notice.error({
+              title: '工号或密码不能为空！',
+              duration: 2,
+            });
+          }
+          else{
+            let d = (await teaLogin(this.tea)).data;
+            console.log(d);
+            if (d.ret === 0) {
+              window.open('http://localhost:8080/#/Home','_self');
+            }
+            if(d.ret === 1) {
+              console.log(d.msg);
+              this.$Notice.error({
+                title: d.msg,
+                duration: 2,
+              });
+            }
+          }
+        },
 
       },
       async mounted() {

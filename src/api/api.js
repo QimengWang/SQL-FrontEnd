@@ -9,3 +9,7 @@ export function personalInfo() {
 export function stuLogin(stu) {
   return axios.post('/api/student/sign/',{studentid:stu.id,password:stu.password});
 }
+
+export function teaLogin(tea) {
+  return axios.post('/api/teacher/sign/',{teacherid:tea.id,password:tea.password});
+}
