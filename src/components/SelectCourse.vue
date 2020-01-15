@@ -147,6 +147,18 @@
           this.info = row;
           let d = (await selectCourse(this.action,this.info)).data;
           console.log(d);
+          if(d.ret === 0){
+            this.$Notice.success({
+              title: d.msg,
+              duration: 2,
+            });
+          }
+          else if(d.ret === 1){
+            this.$Notice.error({
+              title: d.msg,
+              duration: 2,
+            });
+          }
         },
       },
       async mounted () {
