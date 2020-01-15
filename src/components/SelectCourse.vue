@@ -3,64 +3,80 @@
 
       <div class="tableCon">
         <el-form ref="form" :inline="true">
-          <el-form-item label="请输入课程号：">
+          <el-form-item>
+            <h3>请输入课程号：</h3>
+          </el-form-item>
+          <el-form-item>
             <el-input v-model="courseId"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="selectConfirm">确定</el-button>
+            <el-button type="primary" @click="selectCourse">确定</el-button>
           </el-form-item>
         </el-form>
       </div>
 
       <div class="tableCon">
         <el-form>
-          <el-form-item label="可选课程：">
+          <el-form-item>
+            <h3>可选课程：</h3>
           </el-form-item>
           <el-form-item>
             <el-table
-              ref="multipleTable"
               :data="availableCourse"
               tooltip-effect="dark"
-              style="width: 100%"
-              @selection-change="handleSelectionChange">
-              <el-table-column
-                type="selection"
-                width="55">
-              </el-table-column>
+              style="width: 100%">
               <el-table-column
                 prop="kh"
                 label="课程号"
-                width="150">
+                width="100">
               </el-table-column>
               <el-table-column
                 prop="km"
                 label="课程名"
-                width="150">
+                width="120">
               </el-table-column>
               <el-table-column
                 prop="xf"
                 label="学分"
-                width="150">
+                width="80">
               </el-table-column>
               <el-table-column
-                prop="department"
+                prop="yx"
                 label="所在系"
-                width="150">
+                width="120">
               </el-table-column>
               <el-table-column
-                prop="teacher"
+                prop="rkls"
                 label="任课教师"
-                width="150">
+                width="100">
+              </el-table-column>
+              <el-table-column
+                prop="gh"
+                label="工号"
+                width="80">
+              </el-table-column>
+              <el-table-column
+                prop="sksj"
+                label="上课时间"
+                width="100">
+              </el-table-column>
+              <el-table-column
+                fixed="right"
+                label="操作"
+                width="100">
+                <template slot-scope="scope">
+                  <el-button @click="selectCourse(scope.row)" type="text" size="small" style="font-weight: bold">选课</el-button>
+                </template>
               </el-table-column>
             </el-table>
           </el-form-item>
         </el-form>
-        <el-button type="primary" @click="multipleSelectionConfirm">确定</el-button>
       </div>
 
       <div class="tableCon">
         <el-form>
-          <el-form-item label="已选课程：">
+          <el-form-item>
+            <h3>已选课程：</h3>
           </el-form-item>
           <el-form-item>
             <el-table
@@ -79,7 +95,7 @@
               <el-table-column
                 prop="xf"
                 label="学分"
-                width="150">
+                width="100">
               </el-table-column>
               <el-table-column
                 prop="department"
@@ -100,57 +116,41 @@
 </template>
 
 <script>
+  import {selectCourse} from '../api/api';
     export default {
       name: "SelectCourse",
       data () {
           return {
+            action: '',
+            info: '',
             courseId: '',
             availableCourse: [{
-              kh: '08302001',
-              km: '操作系统（1）',
-              xf: '4',
-              department: '计算机学院',
-              teacher: '方昱春'
-            },{
-              kh: '08302002',
-              km: '操作系统（2）',
-              xf: '4',
-              department: '计算机学院',
-              teacher: '张建'
-            }],
 
+            }],
             selectedCourse: [{
-              kh: '08305001',
-              km: '数据库原理（1）',
-              xf: '4',
-              department: '计算机学院',
-              teacher: '李晓强'
-            },{
-              kh: '08305002',
-              km: '数据库原理（2）',
-              xf: '4',
-              department: '计算机学院',
-              teacher: '孙慧玥'
-            }],
 
-            multipleSelection: []
+            }],
           }
 
       },
       methods: {
-        async selectConfirm(){
-
+        async getAvailableCourses(){
+          this.action = 'list_course';
+          let d = (await selectCourse(this.action)).data;
+          console.log(d);
+          this.availableCourse = d.retcourselist;
         },
-        handleSelectionChange(val) {
-          this.multipleSelection = val;
+        async selectCourse(row){
+          this.action = 'select_course';
+          console.log(this.action);
+          console.log(row);
+          this.info = row;
+          let d = (await selectCourse(this.action,this.info)).data;
+          console.log(d);
         },
-        async multipleSelectionConfirm() {
-
-        }
-
       },
       async mounted () {
-
+        this.getAvailableCourses();
       }
     }
 </script>
