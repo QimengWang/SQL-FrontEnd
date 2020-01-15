@@ -40,13 +40,7 @@
         data () {
           return {
             labelPosition: 'right',
-            studInfo: {
-              xm: 'Wqm',
-              xh: '17123079',
-              nl: '18',
-              xb: '女',
-              yx: '计算机工程与科学学院',
-            },
+            studInfo: {},
 
           }
         },
