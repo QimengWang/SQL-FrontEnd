@@ -5,7 +5,7 @@
         class="el-menu-vertical-demo"
         @open="handleOpen"
         @close="handleClose"
-        background-color="#545c64"
+        background-color="#333333"
         text-color="#fff"
         active-text-color="#ffd04b">
           <router-link to="/PersonalInformation">

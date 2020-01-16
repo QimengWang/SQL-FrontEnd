@@ -188,18 +188,26 @@
           this.info = this.courseId
           let d = (await selectCourse(this.action,this.info)).data;
           console.log(d);
-          if(d.ret === 0){
-            this.getSelectedCourses();   //再次列出所选课程
-            this.$Notice.success({
-              title: d.msg,
+          if(this.courseId === '') {
+            this.$Notice.error({
+              title: '课程号不能为空！',
               duration: 2,
             });
           }
-          else if(d.ret === 1){
-            this.$Notice.error({
-              title: d.msg,
-              duration: 2,
-            });
+          else {
+            if(d.ret === 0){
+              this.getSelectedCourses();   //再次列出所选课程
+              this.$Notice.success({
+                title: d.msg,
+                duration: 2,
+              });
+            }
+            else if(d.ret === 1){
+              this.$Notice.error({
+                title: d.msg,
+                duration: 2,
+              });
+            }
           }
         },
         async deleteCourse(row) {
@@ -241,5 +249,9 @@
     text-align: left;
     margin-left: 30px;
     width: 64%;
+  }
+
+  h3 {
+    color: #333333;
   }
 </style>

@@ -5,13 +5,21 @@
       class="el-menu-demo"
       mode="horizontal"
       @select="handleSelect"
-      background-color="#545c64"
+      background-color="#333333"
       text-color="#fff"
       active-text-color="#ffd04b">
       <el-menu-item index="1">学生选课成绩管理系统</el-menu-item>
-      <el-menu-item index="2" style="float: right" @click="signOut">注销</el-menu-item>
+      <el-menu-item index="2" style="float: right" @click="signOut">
+        <div style="width: 60px">
+          <img src="../assets/out.png" class="image1" />
+          <span>退出</span>
+        </div>
+      </el-menu-item>
       <el-menu-item index="3" style="float: right">
-        <span>{{name}}</span>
+        <div style="width: 120px">
+          <img src="../assets/mine.png" class="image2" />
+          <span>{{name}} , 欢迎 ！</span>
+        </div>
       </el-menu-item>
     </el-menu>
   </div>
@@ -48,5 +56,15 @@ export default {
 <style scoped>
   .container {
     height: auto;
+  }
+
+  .image1{
+    height: 28%;
+    width: 28%;
+  }
+
+  .image2 {
+    height: 13%;
+    width: 13%;
   }
 </style>
