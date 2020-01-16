@@ -18,13 +18,13 @@
 </template>
 
 <script>
-  import {} from "../api/api";
+  import {tPersonalInfo} from "../api/api";
   export default {
     name: 'tNavigation',
     data () {
       return {
         activeIndex: '',
-        name: '李晓强',
+        name: '',
       }
     },
     methods:{
@@ -35,7 +35,7 @@
         window.open('http://localhost:8080/#/','_self');
       },
       async setName(){
-        // this.name = (await personalInfo()).data.xm;
+        this.name = (await tPersonalInfo()).data.xm;
       }
     },
     async mounted() {

@@ -85,27 +85,45 @@
               <el-table-column
                 prop="kh"
                 label="课程号"
-                width="150">
+                width="100">
               </el-table-column>
               <el-table-column
                 prop="km"
                 label="课程名"
-                width="150">
+                width="120">
               </el-table-column>
               <el-table-column
                 prop="xf"
                 label="学分"
+                width="80">
+              </el-table-column>
+              <el-table-column
+                prop="yx"
+                label="所在系"
+                width="120">
+              </el-table-column>
+              <el-table-column
+                prop="rkls"
+                label="任课教师"
                 width="100">
               </el-table-column>
               <el-table-column
-                prop="department"
-                label="所在系"
-                width="150">
+                prop="gh"
+                label="工号"
+                width="80">
               </el-table-column>
               <el-table-column
-                prop="teacher"
-                label="任课教师"
-                width="150">
+                prop="sksj"
+                label="上课时间"
+                width="100">
+              </el-table-column>
+              <el-table-column
+                fixed="right"
+                label="操作"
+                width="100">
+                <template slot-scope="scope">
+                  <el-button @click="deleteCourse(scope.row)" type="text" size="small" style="font-weight: bold">删除</el-button>
+                </template>
               </el-table-column>
             </el-table>
           </el-form-item>
@@ -131,23 +149,47 @@
 
             }],
           }
-
       },
       methods: {
-        async getAvailableCourses(){
+        async getAvailableCourses() {
           this.action = 'list_course';
           let d = (await selectCourse(this.action)).data;
-          console.log(d);
+          // console.log(d);
           this.availableCourse = d.retcourselist;
         },
-        async selectCourse(row){
+        async getSelectedCourses() {
+          this.action = 'list_selected_course';
+          let d = (await selectCourse(this.action)).data;
+          // console.log(d);
+          this.selectedCourse = d.retlist;
+        },
+        async selectCourse(row) {
           this.action = 'select_course';
-          console.log(this.action);
           console.log(row);
           this.info = row;
           let d = (await selectCourse(this.action,this.info)).data;
           console.log(d);
           if(d.ret === 0){
+            this.getSelectedCourses();   //再次列出所选课程
+            this.$Notice.success({
+              title: d.msg,
+              duration: 2,
+            });
+          }
+          else if(d.ret === 1){
+            this.$Notice.error({
+              title: d.msg,
+              duration: 2,
+            });
+          }
+        },
+        async deleteCourse(row) {
+          this.action = 'del_course';
+          this.info = row.kh;
+          let d = (await selectCourse(this.action,this.info)).data;
+          console.log(d);
+          if(d.ret === 0){
+            this.getSelectedCourses();   //再次列出所选课程
             this.$Notice.success({
               title: d.msg,
               duration: 2,
@@ -163,6 +205,7 @@
       },
       async mounted () {
         this.getAvailableCourses();
+        this.getSelectedCourses();
       }
     }
 </script>

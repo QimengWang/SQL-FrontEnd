@@ -33,32 +33,26 @@
 </template>
 
 <script>
-  import {} from "../api/api";
+  import {tPersonalInfo} from "../api/api";
 
   export default {
     name: "tPersonalInformation",
     data () {
       return {
         labelPosition: 'right',
-        teaInfo: {
-          xm: '李晓强',
-          gh: '1111',
-          xl: '讲师',
-          xb: '男',
-          yx: '计算机工程与科学学院',
-        },
-
+        teaInfo: {},
       }
     },
     methods:{
       async getData() {
-        // let data = (await personalInfo()).data;
-        // this.teaInfo=data;
-      }
+        let d = (await tPersonalInfo()).data;
+        console.log(d);
+        this.teaInfo = d;
+      },
 
     },
     async mounted() {
-      // this.getData();
+      this.getData();
     }
   }
 </script>
