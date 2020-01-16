@@ -54,7 +54,6 @@
 
 <style scoped>
   .fatherContainer {
-    background-color: whitesmoke;
     width: 100%;
     height: 100%
   }

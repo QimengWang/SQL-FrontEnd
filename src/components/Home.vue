@@ -45,6 +45,7 @@
   }
 
   .router-view{
+    background-color: whitesmoke;
     position: fixed;
     top: 60px;
     left: 200px;

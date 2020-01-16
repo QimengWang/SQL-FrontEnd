@@ -1,77 +1,79 @@
 <template>
     <div class="container">
 
-      <div class="tableCon">
-        <el-form ref="form" :inline="true">
-          <el-form-item>
-            <h3>请输入课程号：</h3>
-          </el-form-item>
-          <el-form-item>
-            <el-input v-model="courseId"></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="selectCourseById">确定</el-button>
-          </el-form-item>
-        </el-form>
-      </div>
+      <el-card>
 
-      <div class="tableCon">
-        <el-form>
-          <el-form-item>
-            <h3>可选课程：</h3>
-          </el-form-item>
-          <el-form-item>
-            <el-table
-              :data="availableCourse"
-              tooltip-effect="dark"
-              style="width: 100%">
-              <el-table-column
-                prop="kh"
-                label="课程号"
-                width="100">
-              </el-table-column>
-              <el-table-column
-                prop="km"
-                label="课程名"
-                width="120">
-              </el-table-column>
-              <el-table-column
-                prop="xf"
-                label="学分"
-                width="80">
-              </el-table-column>
-              <el-table-column
-                prop="yx"
-                label="所在系"
-                width="120">
-              </el-table-column>
-              <el-table-column
-                prop="rkls"
-                label="任课教师"
-                width="100">
-              </el-table-column>
-              <el-table-column
-                prop="gh"
-                label="工号"
-                width="80">
-              </el-table-column>
-              <el-table-column
-                prop="sksj"
-                label="上课时间"
-                width="100">
-              </el-table-column>
-              <el-table-column
-                fixed="right"
-                label="操作"
-                width="100">
-                <template slot-scope="scope">
-                  <el-button @click="selectCourse(scope.row)" type="text" size="small" style="font-weight: bold">选课</el-button>
-                </template>
-              </el-table-column>
-            </el-table>
-          </el-form-item>
-        </el-form>
-      </div>
+        <div class="tableCon">
+          <el-form ref="form" :inline="true">
+            <el-form-item>
+              <h3>请输入课程号：</h3>
+            </el-form-item>
+            <el-form-item>
+              <el-input v-model="courseId"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="selectCourseById">确定</el-button>
+            </el-form-item>
+          </el-form>
+        </div>
+
+        <div class="tableCon">
+          <el-form>
+            <el-form-item>
+              <h3>可选课程：</h3>
+            </el-form-item>
+            <el-form-item>
+              <el-table
+                :data="availableCourse"
+                tooltip-effect="dark"
+                style="width: 100%">
+                <el-table-column
+                  prop="kh"
+                  label="课程号"
+                  width="100">
+                </el-table-column>
+                <el-table-column
+                  prop="km"
+                  label="课程名"
+                  width="120">
+                </el-table-column>
+                <el-table-column
+                  prop="xf"
+                  label="学分"
+                  width="80">
+                </el-table-column>
+                <el-table-column
+                  prop="yx"
+                  label="所在系"
+                  width="120">
+                </el-table-column>
+                <el-table-column
+                  prop="rkls"
+                  label="任课教师"
+                  width="100">
+                </el-table-column>
+                <el-table-column
+                  prop="gh"
+                  label="工号"
+                  width="80">
+                </el-table-column>
+                <el-table-column
+                  prop="sksj"
+                  label="上课时间"
+                  width="100">
+                </el-table-column>
+                <el-table-column
+                  fixed="right"
+                  label="操作"
+                  width="100">
+                  <template slot-scope="scope">
+                    <el-button @click="selectCourse(scope.row)" type="text" size="small" style="font-weight: bold">选课</el-button>
+                  </template>
+                </el-table-column>
+              </el-table>
+            </el-form-item>
+          </el-form>
+        </div>
 
       <div class="tableCon">
         <el-form>
@@ -81,7 +83,7 @@
           <el-form-item>
             <el-table
               :data="selectedCourse"
-              style="width: 100%">
+            style="width: 100%">
               <el-table-column
                 prop="kh"
                 label="课程号"
@@ -110,7 +112,7 @@
               <el-table-column
                 prop="gh"
                 label="工号"
-                width="80">
+                width="100">
               </el-table-column>
               <el-table-column
                 prop="sksj"
@@ -129,8 +131,10 @@
           </el-form-item>
         </el-form>
       </div>
-    </div>
 
+      </el-card>
+
+    </div>
 </template>
 
 <script>
@@ -238,17 +242,25 @@
 </script>
 
 <style scoped>
+  >>>.el-card {
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-bottom: 100px;
+    width: 78%;
+    color: #333333;
+  }
+
   .container {
     width: 100%;
-    height: 500px;
+    height: 100%;
     overflow: auto;
   }
 
   .tableCon {
-    margin-top: 30px;
+    margin-top: 20px;
     text-align: left;
-    margin-left: 30px;
-    width: 64%;
+    margin-left: 20px;
+    width: 90%;
   }
 
   h3 {
