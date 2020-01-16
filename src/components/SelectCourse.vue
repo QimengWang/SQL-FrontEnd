@@ -10,7 +10,7 @@
             <el-input v-model="courseId"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="selectCourse">确定</el-button>
+            <el-button type="primary" @click="selectCourseById">确定</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -166,7 +166,26 @@
         async selectCourse(row) {
           this.action = 'select_course';
           console.log(row);
-          this.info = row;
+          this.info = row.kh;
+          let d = (await selectCourse(this.action,this.info)).data;
+          console.log(d);
+          if(d.ret === 0){
+            this.getSelectedCourses();   //再次列出所选课程
+            this.$Notice.success({
+              title: d.msg,
+              duration: 2,
+            });
+          }
+          else if(d.ret === 1){
+            this.$Notice.error({
+              title: d.msg,
+              duration: 2,
+            });
+          }
+        },
+        async selectCourseById(){
+          this.action = 'select_course';
+          this.info = this.courseId
           let d = (await selectCourse(this.action,this.info)).data;
           console.log(d);
           if(d.ret === 0){

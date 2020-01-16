@@ -16,7 +16,7 @@ export function selectCourse(action,info) {
     return axios.get(`/api/student/select_course/?action=${action}`)
   }
   if(action === 'select_course') {
-    return axios.post('/api/student/select_course/',{action:action,data:info})
+    return axios.post('/api/student/select_course/',{action:action,selectkh:info})
   }
   if(action === 'list_selected_course') {
     return axios.get(`/api/student/select_course/?action=${action}`)
