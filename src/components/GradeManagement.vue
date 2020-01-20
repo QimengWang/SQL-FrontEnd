@@ -54,13 +54,31 @@
                   label="操作"
                   width="100">
                   <template slot-scope="scope">
-                    <el-button @click="deleteCourse(scope.row)" type="text" size="small" style="font-weight: bold">录入/修改成绩</el-button>
+                    <el-button @click="openUpdateForm(scope.row)" type="text" size="small" style="font-weight: bold">录入/修改成绩</el-button>
                   </template>
                 </el-table-column>
               </el-table>
             </el-form-item>
           </el-form>
         </div>
+
+        <Modal
+          v-model="updateFormVisible"
+          title="录入/修改成绩"
+          @on-ok="ok">
+          <el-form :model="updateData">
+            <el-form-item label="学号:" label-width="45px">
+              <el-input v-model="updateData.xh" disabled></el-input>
+            </el-form-item>
+            <el-form-item label="姓名:" label-width="45px">
+              <el-input v-model="updateData.xm" disabled></el-input>
+            </el-form-item>
+            <el-form-item label="成绩:" label-width="45px">
+              <el-input v-model="updateData.zpcj"></el-input>
+            </el-form-item>
+          </el-form>
+        </Modal>
+
         <div class="con4">
           <el-form>
             <el-form-item>
@@ -89,9 +107,17 @@
             }],
             kh: '',
             tableData: [{
-
+              xh: '17123079',
+              xm: '王琦梦',
+              zpcj: '',
             }],
             action: '',
+            updateFormVisible: false,
+            updateData: {
+              xh: '',
+              xm: '',
+              zpcj: '',
+            },
           }
       },
       methods: {
@@ -105,6 +131,14 @@
             const d = (await gradeManage(this.action,this.kh)).data;
             this.tableData = d.retlist;
           },
+          openUpdateForm(row) {
+            this.updateData = JSON.parse(JSON.stringify(row));
+            this.updateFormVisible = true;
+          },
+          ok () {
+            //update grades
+           this.$Message.info('Clicked ok');
+         },
 
       },
       mounted() {
