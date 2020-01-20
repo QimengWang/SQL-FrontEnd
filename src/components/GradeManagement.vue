@@ -65,7 +65,7 @@
         <Modal
           v-model="updateFormVisible"
           title="录入/修改成绩"
-          @on-ok="ok">
+          @on-ok="updateGrade">
           <el-form :model="updateData">
             <el-form-item label="学号:" label-width="45px">
               <el-input v-model="updateData.xh" disabled></el-input>
@@ -107,9 +107,7 @@
             }],
             kh: '',
             tableData: [{
-              xh: '17123079',
-              xm: '王琦梦',
-              zpcj: '',
+
             }],
             action: '',
             updateFormVisible: false,
@@ -135,7 +133,7 @@
             this.updateData = JSON.parse(JSON.stringify(row));
             this.updateFormVisible = true;
           },
-          ok () {
+          updateGrade () {
             //update grades
            this.$Message.info('Clicked ok');
          },
