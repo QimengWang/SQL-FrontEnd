@@ -9,7 +9,7 @@ import Transcript from "../components/Transcript";
 
 import tHome from '../components/tHome';
 import tPersonalInformation from '../components/tPersonalInformation';
-import StudentManagement from '../components/StudentManagement';
+import GradeManagement from '../components/GradeManagement';
 
 Vue.use(Router);
 
@@ -55,9 +55,9 @@ export default new Router({
           component: tPersonalInformation
         },
         {
-          path: '/StudentManagement',
-          name: 'StudentManagement',
-          component: StudentManagement
+          path: '/GradeManagement',
+          name: 'GradeManagement',
+          component: GradeManagement
         }
       ]
     },

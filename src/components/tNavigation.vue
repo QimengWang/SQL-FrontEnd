@@ -33,6 +33,7 @@
       return {
         activeIndex: '',
         name: '',
+        gh: '',
       }
     },
     methods:{

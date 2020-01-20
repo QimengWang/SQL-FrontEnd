@@ -18,12 +18,12 @@
           </div>
         </el-menu-item>
       </router-link>
-      <router-link to="/StudentManagement">
+      <router-link to="/GradeManagement">
         <el-menu-item index="2">
           <div>
             <img src="../assets/select.png" class="image"/>
             <span style="float: left; margin-left: 2%">
-                  学生管理
+                  成绩管理
                 </span>
           </div>
         </el-menu-item>
