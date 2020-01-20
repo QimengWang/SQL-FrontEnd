@@ -59,7 +59,7 @@
         methods:{
           async getData(){
 
-          }
+          },
 
         },
     async mounted(){
