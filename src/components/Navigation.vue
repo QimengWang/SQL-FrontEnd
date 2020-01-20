@@ -18,7 +18,7 @@
       <el-menu-item index="3" style="float: right">
         <div style="width: 120px">
           <img src="../assets/mine.png" class="image2" />
-          <span>{{name}} , 欢迎 ！</span>
+          <span>{{xh}} {{name}}</span>
         </div>
       </el-menu-item>
     </el-menu>
@@ -33,6 +33,7 @@ export default {
     return {
       activeIndex: '',
       name: '',
+      xh: '',
     }
   },
   methods:{
@@ -44,6 +45,7 @@ export default {
     },
     async setName(){
       this.name = (await personalInfo()).data.xm;
+      this.xh = (await personalInfo()).data.xh;
     }
   },
   async mounted() {
@@ -64,7 +66,7 @@ export default {
   }
 
   .image2 {
-    height: 13%;
-    width: 13%;
+    height: 12%;
+    width: 12%;
   }
 </style>
