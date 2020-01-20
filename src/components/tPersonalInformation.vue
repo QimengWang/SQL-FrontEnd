@@ -1,32 +1,25 @@
 <template>
   <div class="container">
-    <el-form :label-position="labelPosition" :model="teaInfo" label-width="80px">
-      <el-form-item label="工号:">
-        <el-card shadow="hover" style="width: 300px; height: 50px;">
+    <el-card>
+      <h1 style="margin-top: 10px">我的信息</h1>
+      <el-form :model="teaInfo" label-width="100px">
+        <el-form-item label="工号:">
           {{teaInfo.gh}}
-        </el-card>
-      </el-form-item>
-      <el-form-item label="姓名:">
-        <el-card shadow="hover" style="width: 300px; height: 50px;">
+        </el-form-item>
+        <el-form-item label="姓名:">
           {{teaInfo.xm}}
-        </el-card>
-      </el-form-item>
-      <el-form-item label="性别:">
-        <el-card shadow="hover" style="width: 300px; height: 50px;">
-          {{teaInfo.xb}}
-        </el-card>
-      </el-form-item>
-      <el-form-item label="学历:">
-        <el-card shadow="hover" style="width: 300px; height: 50px;">
+        </el-form-item>
+        <el-form-item label="学历:">
           {{teaInfo.xl}}
-        </el-card>
-      </el-form-item>
-      <el-form-item label="所在院系:">
-        <el-card shadow="hover" style="width: 300px; height: 50px;">
+        </el-form-item>
+        <el-form-item label="性别:">
+          {{teaInfo.xb}}
+        </el-form-item>
+        <el-form-item label="所在院系:">
           {{teaInfo.yx}}
-        </el-card>
-      </el-form-item>
-    </el-form>
+        </el-form-item>
+      </el-form>
+    </el-card>
   </div>
 
 
@@ -59,7 +52,27 @@
 
 <style scoped>
   .container {
+    height: 100%;
+    width: 100%;
+  }
+
+  >>>.el-card {
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    width: 77%;
+    color: #333333;
+  }
+
+  >>>.el-form {
     margin-top: 30px;
-    margin-left: 30px;
+    width: 40%;
+    float: left;
+    margin-left: 30%;
+  }
+
+  >>>.el-form-item__label{
+    color: #333333;
+    font-weight: bold;
   }
 </style>
