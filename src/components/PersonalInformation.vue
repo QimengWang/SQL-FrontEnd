@@ -1,6 +1,5 @@
 <template>
-  <div class="fatherContainer">
-    <div class="sonContainer">
+  <div class="container">
       <el-card>
         <h1 style="margin-top: 10px">我的信息</h1>
         <el-form :model="studInfo" label-width="100px">
@@ -21,12 +20,7 @@
           </el-form-item>
         </el-form>
       </el-card>
-
-    </div>
   </div>
-
-
-
 </template>
 
 <script>
@@ -53,14 +47,9 @@
 </script>
 
 <style scoped>
-  .fatherContainer {
+  .container {
     width: 100%;
     height: 100%
-  }
-
-  .sonContainer {
-    margin-top: 50px;
-    margin-left: 50px;
   }
 
   >>>.el-form {
@@ -76,7 +65,10 @@
   }
 
   >>>.el-card {
-    width: 80%;
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    width: 77%;
     color: #333333;
   }
 </style>

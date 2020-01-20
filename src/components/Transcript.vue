@@ -76,6 +76,7 @@
 
   h2 {
     margin-top: 20px;
+    color: #333333;
   }
 
   >>>.el-card {
@@ -83,6 +84,7 @@
     margin-left: 50px;
     margin-bottom: 50px;
     width: 77%;
+    color: #333333;
   }
 
   .tableCon {
