@@ -115,6 +115,7 @@
               xh: '',
               xm: '',
               zpcj: '',
+              kh: '',
             },
           }
       },
@@ -133,9 +134,18 @@
             this.updateData = JSON.parse(JSON.stringify(row));
             this.updateFormVisible = true;
           },
-          updateGrade () {
-            //update grades
-           this.$Message.info('Clicked ok');
+          async updateGrade () {
+            this.action = 'post_grade';
+            this.updateData.kh = this.kh;
+            const d = (await gradeManage(this.action, this.updateData)).data;
+            if(d.ret === 0) {
+              console.log(d.msg);
+              this.$Notice.success({
+                title: d.msg,
+                duration: 2,
+              });
+            }
+            this.selectCourseByName();
          },
 
       },

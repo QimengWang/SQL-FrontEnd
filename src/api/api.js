@@ -39,11 +39,14 @@ export function tPersonalInfo() {
   return axios.get('/api/teacher/PersonalInformation/')
 }
 
-export function gradeManage(action,kh) {
-  if(action === 'list_my_course'){
+export function gradeManage(action,data) {
+  if(action === 'list_my_course') {
     return axios.get(`/api/teacher/GradeManage/?action=${action}`);
   }
-  if(action === 'list_students'){
-    return axios.post('/api/teacher/GradeManage/',{action:action, kh:kh});
+  if(action === 'list_students') {
+    return axios.post('/api/teacher/GradeManage/',{action:action, kh:data});
+  }
+  if(action === 'post_grade') {
+    return axios.post('api/teacher/GradeManage/',{action:action, xh:data.xh, kh:data.kh, zpcj:data.zpcj});
   }
 }
