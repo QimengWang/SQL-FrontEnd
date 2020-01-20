@@ -1,9 +1,8 @@
 <template>
   <div class="container">
     <el-card>
-      <h2>学生成绩单</h2>
+      <h1 style="margin-top: 10px">学生成绩单</h1>
       <div class="tableCon">
-<!--        <h1>ttt</h1>-->
         <el-table
           :data="tableData"
           style="width: 90%; margin-top: 10px; margin-bottom: 20px">
@@ -33,6 +32,7 @@
           </el-table-column>
         </el-table>
       </div>
+      <h2 style="margin-bottom: 10px;">平均成绩：{{avgGrade}}</h2>
     </el-card>
   </div>
 
@@ -40,27 +40,24 @@
 </template>
 
 <script>
-  import {} from "../api/api";
+  import {getGrades} from "../api/api";
 
   export default {
         name: "Transcript",
     data () {
           return {
             tableData: [{
-              kh: '08300000',
-              km: 'TEST',
-              zpcj: '100',
-              xf: '4',
-              rkls: 'Teddy',
-            }],
 
+            }],
+            avgGrade: '',
           }
         },
         methods:{
           async getData(){
-
-          },
-
+            const d = (await getGrades()).data;
+            this.tableData = d.retlist;
+            this.avgGrade = d.avgGrade;
+          }
         },
     async mounted(){
           this.getData();
@@ -72,11 +69,6 @@
   .container {
     height: 100%;
     width: 100%;
-  }
-
-  h2 {
-    margin-top: 20px;
-    color: #333333;
   }
 
   >>>.el-card {

@@ -26,6 +26,10 @@ export function selectCourse(action,info) {
   }
 }
 
+export function getGrades() {
+  return axios.get('/api/student/list_grade/')
+}
+
 // For teacher:
 export function teaLogin(tea) {
   return axios.post('/api/teacher/sign/',{teacherid:tea.id,password:tea.password});
