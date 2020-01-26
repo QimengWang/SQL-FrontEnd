@@ -140,7 +140,13 @@
 
   .button {
     width: 300px;
-    background-color: #545c64;
+    /*background-color: #545c64;*/
+    font-weight: bold;
+    background-color: #333333;
+  }
+
+  >>>.el-form-item__label{
+    color: #333333;
     font-weight: bold;
   }
 
