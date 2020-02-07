@@ -46,8 +46,7 @@
                 </el-table-column>
                 <el-table-column
                   prop="zpcj"
-                  label="成绩"
-                  width="100">
+                  label="成绩">
                 </el-table-column>
                 <el-table-column
                   fixed="right"
@@ -149,6 +148,7 @@
               });
             }
             this.selectCourseByName();
+            this.drawCharts();
           },
           async drawCharts () {
             this.action = 'grade_distribution';
