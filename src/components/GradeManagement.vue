@@ -130,6 +130,8 @@
             this.action = 'list_students';
             const d = (await gradeManage(this.action,this.kh)).data;
             this.tableData = d.retlist;
+
+            this.drawCharts();
           },
           openUpdateForm(row) {
             this.updateData = JSON.parse(JSON.stringify(row));
@@ -147,38 +149,39 @@
               });
             }
             this.selectCourseByName();
-         },
-        drawCharts () {
-          var dom = document.getElementById('echarts');
-          var myChart = this.echarts.init(dom);
-          // 绘制图表
-          myChart.setOption({
-            title: {
-              text: '成绩分布',
-              show: false,
-            },
-            grid: {
-              // show: true,
-            },
-            xAxis: {
-              show: true,
-              name: '绩点',
-              type: 'category',
-              data: ['<1.0', '1.0', '2.0', '2.7', '3.0', '3.7', '4.0'],
-            },
-            yAxis: {
-              show: true,
-              name: '人数',
-            },
-            series: {
-              type: 'bar',
-              data: [1, 0, 6, 9, 2, 10, 9]
+          },
+          async drawCharts () {
+            this.action = 'grade_distribution';
+            const d = (await gradeManage(this.action, this.kh)).data.retlist;
+            console.log(d);
+            var dom = document.getElementById('echarts');
+            var myChart = this.echarts.init(dom);
+            // 绘制图表
+            myChart.setOption({
+              title: {
+                text: '成绩分布',
+                show: false,
+              },
+              grid: {
+                // show: true,
+              },
+              xAxis: {
+                show: true,
+                name: '绩点',
+                type: 'category',
+                data: ['0', '1.0', '1.5', '1.7', '2.0', '2.3', '2.7', '3.0', '3.3', '3.7', '4.0'],
+              },
+              yAxis: {
+                show: true,
+                name: '人数',
+              },
+              series: {
+                type: 'bar',
+                data: d,
+              }
+            });
 
-            }
-
-          });
-
-        },
+          },
 
       },
       mounted() {

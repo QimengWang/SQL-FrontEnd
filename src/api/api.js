@@ -49,4 +49,7 @@ export function gradeManage(action,data) {
   if(action === 'post_grade') {
     return axios.post('api/teacher/GradeManage/',{action:action, xh:data.xh, kh:data.kh, zpcj:data.zpcj});
   }
+  if(action === 'grade_distribution') {
+    return axios.post('api/teacher/GradeManage/', {action:action, kh: data});
+  }
 }
