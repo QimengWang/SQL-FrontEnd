@@ -19,6 +19,11 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
 
+//引入echarts
+import echarts from 'echarts'
+Vue.prototype.echarts = echarts;
+Vue.use(echarts);
+
 //实现前后端交互
 //Vue.prototype.$axios = axios
 //Vue.prototype.HOST = '/api'

@@ -62,30 +62,14 @@
           </el-form>
         </div>
 
-        <Modal
-          v-model="updateFormVisible"
-          title="录入/修改成绩"
-          @on-ok="updateGrade">
-          <el-form :model="updateData">
-            <el-form-item label="学号:" label-width="45px">
-              <el-input v-model="updateData.xh" disabled></el-input>
-            </el-form-item>
-            <el-form-item label="姓名:" label-width="45px">
-              <el-input v-model="updateData.xm" disabled></el-input>
-            </el-form-item>
-            <el-form-item label="成绩:" label-width="45px">
-              <el-input v-model="updateData.zpcj"></el-input>
-            </el-form-item>
-          </el-form>
-        </Modal>
-
         <div class="con4">
           <el-form>
             <el-form-item>
               <h3>成绩分布：</h3>
             </el-form-item>
             <el-form-item>
-
+              <div id="echarts" style="width: 50%; height: 300px">
+              </div>
             </el-form-item>
           </el-form>
         </div>
@@ -93,6 +77,23 @@
       </div>
 
     </el-card>
+
+    <Modal
+      v-model="updateFormVisible"
+      title="录入/修改成绩"
+      @on-ok="updateGrade">
+      <el-form :model="updateData">
+        <el-form-item label="学号:" label-width="45px">
+          <el-input v-model="updateData.xh" disabled></el-input>
+        </el-form-item>
+        <el-form-item label="姓名:" label-width="45px">
+          <el-input v-model="updateData.xm" disabled></el-input>
+        </el-form-item>
+        <el-form-item label="成绩:" label-width="45px">
+          <el-input v-model="updateData.zpcj"></el-input>
+        </el-form-item>
+      </el-form>
+    </Modal>
   </div>
 </template>
 
@@ -147,10 +148,42 @@
             }
             this.selectCourseByName();
          },
+        drawCharts () {
+          var dom = document.getElementById('echarts');
+          var myChart = this.echarts.init(dom);
+          // 绘制图表
+          myChart.setOption({
+            title: {
+              text: '成绩分布',
+              show: false,
+            },
+            grid: {
+              // show: true,
+            },
+            xAxis: {
+              show: true,
+              name: '绩点',
+              type: 'category',
+              data: ['<1.0', '1.0', '2.0', '2.7', '3.0', '3.7', '4.0'],
+            },
+            yAxis: {
+              show: true,
+              name: '人数',
+            },
+            series: {
+              type: 'bar',
+              data: [1, 0, 6, 9, 2, 10, 9]
+
+            }
+
+          });
+
+        },
 
       },
       mounted() {
           this.getCourse();
+          this.drawCharts();
       }
     }
 </script>
