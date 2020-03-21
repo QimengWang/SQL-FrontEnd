@@ -246,14 +246,14 @@
     margin-top: 50px;
     margin-left: 50px;
     margin-bottom: 100px;
-    width: 78%;
+    width: 77%;
     color: #333333;
   }
 
   .container {
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow-y: auto;
   }
 
   .tableCon {

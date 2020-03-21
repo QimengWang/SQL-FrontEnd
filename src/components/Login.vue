@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <div style="margin-top: 8%; margin-left: 35%">
       <el-card class="box-card">
 
         <div style="margin-top: 3%; font-weight: bold; font-size: 23px;">
@@ -49,7 +48,6 @@
 
       </el-card>
     </div>
-  </div>
 
 </template>
 
@@ -129,13 +127,20 @@
     width: 100%;
     height: 100vh;
     background-color: whitesmoke;
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
+  /**两种居中方式**/
   .box-card {
     width: 350px;
     background: rgba(255,255,255,0.7);
     text-align: center;
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
   }
 
   .button {

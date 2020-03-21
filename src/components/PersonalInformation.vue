@@ -2,7 +2,7 @@
   <div class="container">
       <el-card>
         <h1 style="margin-top: 10px">我的信息</h1>
-        <el-form :model="studInfo" label-width="100px">
+        <el-form :model="studInfo">
           <el-form-item label="学号:">
               {{studInfo.xh}}
           </el-form-item>
@@ -55,8 +55,9 @@
   >>>.el-form {
     margin-top: 30px;
     width: 40%;
-    float: left;
-    margin-left: 30%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
   }
 
   >>>.el-form-item__label{
@@ -65,9 +66,9 @@
   }
 
   >>>.el-card {
-    margin-top: 50px;
-    margin-left: 50px;
-    margin-bottom: 50px;
+    position: relative;
+    top: 50px;
+    left: 50px;
     width: 77%;
     color: #333333;
   }
