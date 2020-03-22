@@ -2,10 +2,9 @@
   <div class="container">
     <el-card>
       <h1 style="margin-top: 10px">学生成绩单</h1>
-      <div class="tableCon">
         <el-table
           :data="tableData"
-          style="width: 90%; margin-top: 10px; margin-bottom: 20px">
+          style="margin-top: 10px; margin-bottom: 20px">
           <el-table-column
             prop="kh"
             label="课程号"
@@ -31,7 +30,6 @@
             label="教师">
           </el-table-column>
         </el-table>
-      </div>
       <h2 style="margin-bottom: 10px;">平均成绩：{{avgGrade}}</h2>
     </el-card>
   </div>
@@ -67,20 +65,15 @@
 
 <style scoped>
   .container {
-    height: 100%;
-    width: 100%;
+    height: calc(100vh - 60px);
+    width: calc(100% - 200px);
   }
 
   >>>.el-card {
-    margin-top: 50px;
-    margin-left: 50px;
-    margin-bottom: 50px;
-    width: 77%;
+    display: flex;
+    justify-content: center;
+    margin: 50px;
     color: #333333;
-  }
-
-  .tableCon {
-    margin-left: 9%;
   }
 
 </style>

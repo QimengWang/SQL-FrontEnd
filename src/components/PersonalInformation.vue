@@ -48,14 +48,14 @@
 
 <style scoped>
   .container {
-    width: 100%;
-    height: 100%
+    width: calc(100% - 200px);
+    height: calc(100vh - 60px);
   }
 
   >>>.el-form {
     margin-top: 30px;
     width: 40%;
-    position: relative;
+    position: relative; /*不使用absolute是为了防止from被文件流删去，导致card溢出*/
     left: 50%;
     transform: translate(-50%, 0%);
   }
@@ -66,10 +66,9 @@
   }
 
   >>>.el-card {
-    position: relative;
-    top: 50px;
-    left: 50px;
-    width: 77%;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
     color: #333333;
   }
 </style>

@@ -1,14 +1,8 @@
 <template>
   <div class="home-container">
     <Navigation class="nav-screen"></Navigation>
-    <div class="full-screen">
-          <div>
-            <Sidebar class="sidebar-screen"></Sidebar>
-          </div>
-          <div>
-            <router-view class="router-view"></router-view>
-          </div>
-    </div>
+    <Sidebar class="sidebar-screen"></Sidebar>
+    <router-view class="router-view"></router-view>
   </div>
 </template>
 
@@ -24,6 +18,7 @@
 
 <style scoped>
   .home-container {
+    width: 100%;
     height: 100%;
   }
 
@@ -31,24 +26,23 @@
     width: 100%;
     height: 60px;
     position: fixed;
+    top: 0;
     z-index: 99;
   }
 
-  .full-screen {
-    width: 100%;
-  }
-
   .sidebar-screen{
-    top: 60px;
-    left: 0;
     position: fixed;
+    top: 60px;
+    z-index: 88;
+    float: left;
   }
 
   .router-view{
-    background-color: whitesmoke;
-    position: fixed;
+    position: relative;
+    float: left;
     top: 60px;
     left: 200px;
+    background-color: whitesmoke;
   }
 
 </style>

@@ -242,18 +242,13 @@
 </script>
 
 <style scoped>
-  >>>.el-card {
-    margin-top: 50px;
-    margin-left: 50px;
-    margin-bottom: 100px;
-    width: 77%;
-    color: #333333;
+  .container {
+    width: calc(100% - 200px);
   }
 
-  .container {
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
+  >>>.el-card {
+    margin: 50px;
+    color: #333333;
   }
 
   .tableCon {
