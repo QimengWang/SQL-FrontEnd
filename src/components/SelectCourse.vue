@@ -244,6 +244,7 @@
 <style scoped>
   .container {
     width: calc(100% - 200px);
+    height: calc(100vh - 60px);
   }
 
   >>>.el-card {
