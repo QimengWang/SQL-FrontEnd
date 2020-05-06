@@ -30,7 +30,7 @@
                 <el-table-column
                   prop="kh"
                   label="课程号"
-                  width="100">
+                  width="120">
                 </el-table-column>
                 <el-table-column
                   prop="km"
@@ -40,7 +40,7 @@
                 <el-table-column
                   prop="xf"
                   label="学分"
-                  width="80">
+                  width="100">
                 </el-table-column>
                 <el-table-column
                   prop="yx"
@@ -55,7 +55,7 @@
                 <el-table-column
                   prop="gh"
                   label="工号"
-                  width="80">
+                  width="100">
                 </el-table-column>
                 <el-table-column
                   prop="sksj"
@@ -64,8 +64,7 @@
                 </el-table-column>
                 <el-table-column
                   fixed="right"
-                  label="操作"
-                  width="100">
+                  label="操作">
                   <template slot-scope="scope">
                     <el-button @click="selectCourse(scope.row)" type="text" size="small" style="font-weight: bold">选课</el-button>
                   </template>
@@ -83,11 +82,11 @@
           <el-form-item>
             <el-table
               :data="selectedCourse"
-            style="width: 100%">
+              style="width: 100%">
               <el-table-column
                 prop="kh"
                 label="课程号"
-                width="100">
+                width="120">
               </el-table-column>
               <el-table-column
                 prop="km"
@@ -97,7 +96,7 @@
               <el-table-column
                 prop="xf"
                 label="学分"
-                width="80">
+                width="100">
               </el-table-column>
               <el-table-column
                 prop="yx"
@@ -121,8 +120,7 @@
               </el-table-column>
               <el-table-column
                 fixed="right"
-                label="操作"
-                width="100">
+                label="操作">
                 <template slot-scope="scope">
                   <el-button @click="deleteCourse(scope.row)" type="text" size="small" style="font-weight: bold">删除</el-button>
                 </template>
@@ -244,7 +242,8 @@
 <style scoped>
   .container {
     width: calc(100% - 200px);
-    height: calc(100vh - 60px);
+    /*height: calc(100vh - 60px);*/
+    background-color: whitesmoke;
   }
 
   >>>.el-card {

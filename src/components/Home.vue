@@ -42,7 +42,6 @@
     float: left;
     top: 60px;
     left: 200px;
-    background-color: whitesmoke;
   }
 
 </style>

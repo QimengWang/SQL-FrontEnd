@@ -35,8 +35,7 @@
         },
         methods:{
           async getData() {
-            let data = (await personalInfo()).data;
-            this.studInfo=data;
+            this.studInfo = (await personalInfo()).data;
           }
 
         },
@@ -50,6 +49,7 @@
   .container {
     width: calc(100% - 200px);
     height: calc(100vh - 60px);
+    background-color: whitesmoke;
   }
 
   >>>.el-form {
@@ -66,6 +66,7 @@
   }
 
   >>>.el-card {
+    /*margin: 50px;*/
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 50px;
