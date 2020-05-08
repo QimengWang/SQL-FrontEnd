@@ -53,3 +53,8 @@ export function gradeManage(action,data) {
     return axios.post('api/teacher/GradeManage/', {action:action, kh: data});
   }
 }
+
+//For manager
+export function manLogin(manager) {
+  return axios.post('/api/admin/sign/',{adminId:manager.id, password:manager.password});
+}
