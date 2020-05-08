@@ -153,7 +153,7 @@
             let d = (await manLogin(this.manager)).data;
             console.log(d);
             if (d.ret === 0) {
-              window.open('http://localhost:8080/#/tHome','_self');
+              window.open('http://localhost:8080/#/mPersonalInformation','_self');
             }
             if(d.ret === 1) {
               console.log(d.msg);

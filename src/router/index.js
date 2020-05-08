@@ -11,6 +11,9 @@ import tHome from '../components/tHome';
 import tPersonalInformation from '../components/tPersonalInformation';
 import GradeManagement from '../components/GradeManagement';
 
+import mHome from '../components/mHome';
+import mPersonalInformation from '../components/mPersonalInformation';
+
 Vue.use(Router);
 
 export default new Router({
@@ -20,12 +23,12 @@ export default new Router({
       name: 'Login',
       component: Login
     },
+    // for student:
     {
       path: '/Home',
       name: 'Home',
       component: Home,
       children: [
-        // for student:
         {
           path: '/SelectCourse',
           name: 'SelectCourse',
@@ -58,6 +61,19 @@ export default new Router({
           path: '/GradeManagement',
           name: 'GradeManagement',
           component: GradeManagement
+        }
+      ]
+    },
+    // for manager:
+    {
+      path: '/mHome',
+      name: 'mHome',
+      component: mHome,
+      children: [
+        {
+          path: '/mPersonalInformation',
+          name: 'mPersonalInformation',
+          component: mPersonalInformation
         }
       ]
     },
