@@ -13,6 +13,7 @@ import GradeManagement from '../components/GradeManagement';
 
 import mHome from '../components/mHome';
 import mPersonalInformation from '../components/mPersonalInformation';
+import StudentManagement from "../components/StudentManagement";
 
 Vue.use(Router);
 
@@ -74,6 +75,11 @@ export default new Router({
           path: '/mPersonalInformation',
           name: 'mPersonalInformation',
           component: mPersonalInformation
+        },
+        {
+          path: '/StudentManagement',
+          name: 'StudentManagement',
+          component: StudentManagement
         }
       ]
     },

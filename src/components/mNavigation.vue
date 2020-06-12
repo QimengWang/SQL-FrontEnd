@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import {} from "../api/api";
+  import {mPersonalInfo} from "../api/api";
   export default {
     name: 'mNavigation',
     data () {
@@ -43,14 +43,14 @@
       async signOut(){
         window.open('http://localhost:8080/#/','_self');
       },
-      // async setName(){
-      //   const d = (await mPersonalInfo()).data;
-      //   this.name = d.xm;
-      //   this.gh = d.gh;
-      // }
+      async setName(){
+        const d = (await mPersonalInfo()).data;
+        this.name = d.xm;
+        this.gh = d.gh;
+      }
     },
     async mounted() {
-      // this.setName();
+      this.setName();
     }
   }
 </script>

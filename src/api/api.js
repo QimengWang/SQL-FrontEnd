@@ -13,21 +13,21 @@ export function personalInfo() {
 
 export function selectCourse(action,info) {
   if(action === 'list_course') {
-    return axios.get(`/api/student/select_course/?action=${action}`)
+    return axios.get(`/api/student/select_course/?action=${action}`);
   }
   if(action === 'select_course') {
-    return axios.post('/api/student/select_course/',{action:action, selectkh:info})
+    return axios.post('/api/student/select_course/',{action:action, selectkh:info});
   }
   if(action === 'list_selected_course') {
-    return axios.get(`/api/student/select_course/?action=${action}`)
+    return axios.get(`/api/student/select_course/?action=${action}`);
   }
   if(action === 'del_course') {
-    return axios.post('/api/student/select_course/',{action:action, courseid:info})
+    return axios.post('/api/student/select_course/',{action:action, courseid:info});
   }
 }
 
 export function getGrades() {
-  return axios.get('/api/student/list_grade/')
+  return axios.get('/api/student/list_grade/');
 }
 
 // For teacher:
@@ -36,7 +36,7 @@ export function teaLogin(tea) {
 }
 
 export function tPersonalInfo() {
-  return axios.get('/api/teacher/PersonalInformation/')
+  return axios.get('/api/teacher/PersonalInformation/');
 }
 
 export function gradeManage(action,data) {
@@ -57,4 +57,14 @@ export function gradeManage(action,data) {
 //For manager
 export function manLogin(manager) {
   return axios.post('/api/admin/sign/',{adminId:manager.id, password:manager.password});
+}
+
+export function mPersonalInfo() {
+  return axios.get('/api/admin/PersonalInformation/');
+}
+
+export function listStudents(action) {
+  if(action === 'list_students') {
+    return axios.get(`/api/admin/student_info/?action=${action}`)
+  }
 }
