@@ -63,8 +63,11 @@ export function mPersonalInfo() {
   return axios.get('/api/admin/PersonalInformation/');
 }
 
-export function listStudents(action) {
+export function listStudents(action, data) {
   if(action === 'list_students') {
     return axios.get(`/api/admin/student_info/?action=${action}`)
+  }
+  if(action === 'alter_info') {
+    return axios.post(`/api/admin/student_info/`,{action: action, studentid: data.studentId, newdata: data.newData});
   }
 }
