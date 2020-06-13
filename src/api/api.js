@@ -68,6 +68,9 @@ export function listStudents(action, data) {
     return axios.get(`/api/admin/student_info/?action=${action}`)
   }
   if(action === 'alter_info') {
-    return axios.post(`/api/admin/student_info/`,{action: action, studentid: data.studentId, newdata: data.newData});
+    return axios.post('/api/admin/student_info/',{action: action, studentid: data.studentId, newdata: data.newData});
+  }
+  if(action === 'add_student') {
+    return axios.post('/api/admin/student_info/',{action: action, data: data});
   }
 }

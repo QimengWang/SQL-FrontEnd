@@ -84,8 +84,17 @@
       <el-form-item label="姓名:" label-width="45px">
         <el-input v-model="addInfo.xm"></el-input>
       </el-form-item>
+      <el-form-item label="年龄:" label-width="45px">
+        <el-input v-model="addInfo.nl"></el-input>
+      </el-form-item>
       <el-form-item label="性别:" label-width="45px">
         <el-input v-model="addInfo.xb"></el-input>
+      </el-form-item>
+      <el-form-item label="手机号码:" label-width="45px">
+        <el-input v-model="addInfo.sjhm"></el-input>
+      </el-form-item>
+      <el-form-item label="密码:" label-width="45px">
+        <el-input v-model="addInfo.mm"></el-input>
       </el-form-item>
       <el-form-item label="学院:" label-width="45px">
         <el-input v-model="addInfo.yx"></el-input>
@@ -127,7 +136,10 @@
           addInfo: {
             xh: '',
             xm: '',
+            nl: '',
             xb: '',
+            sjhm: '',
+            mm: '',
             yx: ''
           },
           updateFormVisible: false,
@@ -151,32 +163,65 @@
           this.action = 'alter_info';
           this.data.studentId = this.updateInfo.xh;
           const d = this.stuInfo[0];
+          let flag = 0;//防止出现没有任何修改但是仍向后端发送请求的情况
           for (let propName in this.updateInfo) {
             // console.log(this.updateInfo[propName]);
             if (this.updateInfo[propName] !== d[propName]) {
+              flag = 1;
               console.log("new:" + propName + this.updateInfo[propName]);
               this.data.newData[propName] = this.updateInfo[propName];
             }
           }
           // console.log(this.data.newData);
-          for (let p in this.data.newData) {
-            console.log(p + ": " + this.data.newData[p]);
+          // for (let p in this.data.newData) {
+          //   console.log(p + ": " + this.data.newData[p]);
+          // }
+          let ret = -1;
+          if(flag === 1) {
+            ret = (await listStudents(this.action, this.data)).data.ret;
           }
-          const ret = (await listStudents(this.action, this.data)).data.ret;
           if (ret === 0) {
-            console.log("Ok!");
+            // console.log("Ok!");
             this.$Notice.success({
               title: "修改成功！",
               duration: 2,
             });
+            this.data.newData = null;
             this.getStuInfo();
+          }
+          else if (ret === -1){
+            this.$Notice.warning({
+              title: "未修改！",
+              duration: 2,
+            });
+          }
+          else {
+            this.$Notice.error({
+              title: "修改失败！",
+              duration: 2,
+            });
           }
         },
         async openAddForm () {
           this.addFormVisible = true;
         },
         async addStudents () {
-
+          this.action = 'add_student';
+          let r = (await listStudents(this.action, this.addInfo)).data;
+          if (r.ret === 0) {
+            this.$Notice.success({
+              title: r.message,
+              duration: 2,
+            });
+            // this.addInfo = null;
+            this.getStuInfo();
+          }
+          else {
+            this.$Notice.error({
+              title: "添加失败！",
+              duration: 2,
+            });
+          }
         }
       },
       async mounted () {
@@ -188,6 +233,7 @@
 <style scoped>
   .container {
     width: calc(100% - 200px);
+    /*height: auto;*/
     height: calc(100vh - 60px);
     background-color: whitesmoke;
   }
