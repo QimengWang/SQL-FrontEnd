@@ -41,10 +41,11 @@
         label="操作">
         <template slot-scope="scope">
           <el-button @click="openUpdateForm(scope.row)" type="text" size="small" style="font-weight: bold">修改</el-button>
+          <el-button @click="deleteStu(scope.row)" type="text" size="small" style="font-weight: bold">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
-    <el-button type="primary" style="float: left; margin-top: 30px" @click="openAddForm()">添加</el-button>
+    <el-button type="primary" style="float: left; margin-top: 30px" @click="openAddForm">添加</el-button>
   </el-card>
 
   <Modal
@@ -172,10 +173,6 @@
               this.data.newData[propName] = this.updateInfo[propName];
             }
           }
-          // console.log(this.data.newData);
-          // for (let p in this.data.newData) {
-          //   console.log(p + ": " + this.data.newData[p]);
-          // }
           let ret = -1;
           if(flag === 1) {
             ret = (await listStudents(this.action, this.data)).data.ret;
@@ -222,7 +219,31 @@
               duration: 2,
             });
           }
-        }
+        },
+        async deleteStu (row) {
+          this.action = 'del_student';
+          this.data.studentId = row.xh;
+          const r = (await listStudents(this.action, this.data)).data;
+          this.$confirm('此操作将删除该学生, 是否继续?', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }).then(() => {
+            if(r.ret === 0) {
+              this.$message({
+                type: 'success',
+                message: r.msg + "!"
+              });
+              this.getStuInfo();
+            }
+          }).catch(() => {
+            this.$message({
+              type: 'info',
+              message: '已取消删除'
+            });
+          });
+
+        },
       },
       async mounted () {
         this.getStuInfo();
@@ -233,8 +254,6 @@
 <style scoped>
   .container {
     width: calc(100% - 200px);
-    /*height: auto;*/
-    /*height: calc(100vh - 60px);*/
     background-color: whitesmoke;
   }
 
