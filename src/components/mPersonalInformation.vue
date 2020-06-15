@@ -49,7 +49,6 @@
   .container {
     height: 100%;
     width: calc(100% - 200px);
-    /*width: 100%;*/
     background-color: whitesmoke;
   }
 
