@@ -37,12 +37,12 @@
                 <el-table-column
                   prop="xh"
                   label="学号"
-                  width="120">
+                  width="140">
                 </el-table-column>
                 <el-table-column
                   prop="xm"
                   label="姓名"
-                  width="120">
+                  width="140">
                 </el-table-column>
                 <el-table-column
                   prop="zpcj"
@@ -193,16 +193,12 @@
 
 <style scoped>
   .container {
-    height: 100%;
-    width: 100%;
-    overflow: auto;
+    width: calc(100% - 200px);
+    background-color: whitesmoke;
   }
 
   >>>.el-card {
-    margin-top: 50px;
-    margin-left: 50px;
-    margin-bottom: 100px;
-    width: 77%;
+    margin: 50px;
     color: #333333;
     text-align: left;
   }
@@ -216,11 +212,5 @@
     margin-left: 20px;
     margin-top: 20px;
     width: 100%;
-  }
-
-  con3 {
-  }
-
-  .con4 {
   }
 </style>

@@ -39,14 +39,15 @@
   }
 
   .sidebar-screen{
-    top: 60px;
-    left: 0;
     position: fixed;
+    top: 60px;
+    z-index: 88;
+    float: left;
   }
 
   .router-view{
-    background-color: whitesmoke;
-    position: fixed;
+    position: relative;
+    float: left;
     top: 60px;
     left: 200px;
   }

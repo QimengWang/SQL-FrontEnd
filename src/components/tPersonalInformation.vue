@@ -52,15 +52,13 @@
 
 <style scoped>
   .container {
+    width: calc(100% - 200px);
     height: 100%;
-    width: 100%;
+    /*width: 100%;*/
   }
 
   >>>.el-card {
-    margin-top: 50px;
-    margin-left: 50px;
-    margin-bottom: 50px;
-    width: 77%;
+    margin: 50px;
     color: #333333;
   }
 
