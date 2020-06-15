@@ -44,7 +44,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-button type="primary" style="float: left; margin-top: 20px" @click="openAddForm()">添加</el-button>
+    <el-button type="primary" style="float: left; margin-top: 30px" @click="openAddForm()">添加</el-button>
   </el-card>
 
   <Modal
@@ -234,7 +234,7 @@
   .container {
     width: calc(100% - 200px);
     /*height: auto;*/
-    height: calc(100vh - 60px);
+    /*height: calc(100vh - 60px);*/
     background-color: whitesmoke;
   }
 

@@ -15,6 +15,9 @@
           <el-form-item label="性别:">
               {{studInfo.xb}}
           </el-form-item>
+          <el-form-item label="手机号码:">
+            {{studInfo.sjhm}}
+          </el-form-item>
           <el-form-item label="所在院系:">
               {{studInfo.yx}}
           </el-form-item>

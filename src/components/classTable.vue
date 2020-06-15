@@ -91,7 +91,7 @@
 <style  scoped>
   .container{
      width: calc(100% - 200px);
-     height: calc(100vh - 60px);
+     /*height: calc(100vh - 60px);*/
      background-color: whitesmoke;
   }
   .table-wrapper {
@@ -122,10 +122,10 @@
          line-height: 20px;
    }
   >>>.el-card {
-    /*margin: 50px;*/
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 50px;
+    margin: 50px;
+    /*margin-left: 50px;*/
+    /*margin-right: 50px;*/
+    /*margin-top: 50px;*/
     color: #333333;
   }
   #button {
