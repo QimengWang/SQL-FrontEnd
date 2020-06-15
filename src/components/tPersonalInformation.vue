@@ -53,7 +53,7 @@
 <style scoped>
   .container {
     width: calc(100% - 200px);
-    height: 100%;
+    height: calc(100vh - 60px);
     background-color: whitesmoke;
   }
 
