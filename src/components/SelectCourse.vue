@@ -40,7 +40,7 @@
                 <el-table-column
                   prop="xf"
                   label="学分"
-                  width="100">
+                  width="80">
                 </el-table-column>
                 <el-table-column
                   prop="yx"
@@ -55,11 +55,21 @@
                 <el-table-column
                   prop="gh"
                   label="工号"
-                  width="100">
+                  width="80">
                 </el-table-column>
                 <el-table-column
                   prop="sksj"
                   label="上课时间"
+                  width="100">
+                </el-table-column>
+                <el-table-column
+                  prop="xkrs"
+                  label="选课人数"
+                  width="100">
+                </el-table-column>
+                <el-table-column
+                  prop="xzrs"
+                  label="限制人数"
                   width="100">
                 </el-table-column>
                 <el-table-column
@@ -96,7 +106,7 @@
               <el-table-column
                 prop="xf"
                 label="学分"
-                width="100">
+                width="80">
               </el-table-column>
               <el-table-column
                 prop="yx"
@@ -111,11 +121,21 @@
               <el-table-column
                 prop="gh"
                 label="工号"
-                width="100">
+                width="80">
               </el-table-column>
               <el-table-column
                 prop="sksj"
                 label="上课时间"
+                width="100">
+              </el-table-column>
+              <el-table-column
+                prop="xkrs"
+                label="选课人数"
+                width="100">
+              </el-table-column>
+              <el-table-column
+                prop="xzrs"
+                label="限制人数"
                 width="100">
               </el-table-column>
               <el-table-column
@@ -255,7 +275,7 @@
     margin-top: 20px;
     text-align: left;
     margin-left: 20px;
-    width: 90%;
+    width: 95%;
   }
 
   h3 {

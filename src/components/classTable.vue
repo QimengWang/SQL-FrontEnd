@@ -1,7 +1,7 @@
 <template>
   <div class="container">
   <el-card>
-    <el-button v-print="'#Table'" id="button">打印</el-button>
+    <el-button v-print="'#Table'" id="button" type="primary">打印</el-button>
     <div class="class-table">
       <div class="table-wrapper">
         <div class="tabel-container">
@@ -132,7 +132,7 @@
     width: 100px;
     /*background-color: #545c64;*/
     font-weight: bold;
-    background-color:#333333;
+    /*background-color:#333333;*/
     color: whitesmoke;
     margin-bottom: 10px;
     float: right;
