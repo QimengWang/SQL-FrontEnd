@@ -229,14 +229,15 @@
           }
         },
         async deleteStu (row) {
-          this.action = 'del_student';
-          this.data.studentId = row.xh;
-          const r = (await listStudents(this.action, this.data)).data;
+
           this.$confirm('此操作将删除该学生, 是否继续?', '提示', {
             confirmButtonText: '确定',
             cancelButtonText: '取消',
             type: 'warning'
-          }).then(() => {
+          }).then(async () => {
+            this.action = 'del_student';
+            this.data.studentId = row.xh;
+            const r = (await listStudents(this.action, this.data)).data;
             if(r.ret === 0) {
               this.$message({
                 type: 'success',
