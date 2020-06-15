@@ -78,6 +78,6 @@ export function listStudents(action, data) {
     return axios.post('/api/admin/student_info/',{action: action, data: data});
   }
   if(action === 'del_student') {
-    return axios.post('/api/admin/student_info/',{action: action, data: data.studentId});
+    return axios.post('/api/admin/student_info/',{action: action, studentid: data.studentId});
   }
 }
