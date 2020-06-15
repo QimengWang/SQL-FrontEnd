@@ -24,6 +24,11 @@ import echarts from 'echarts'
 Vue.prototype.echarts = echarts;
 Vue.use(echarts);
 
+//
+import Print from 'vue-print-nb'
+
+Vue.use(Print);
+
 //实现前后端交互
 //Vue.prototype.$axios = axios
 //Vue.prototype.HOST = '/api'

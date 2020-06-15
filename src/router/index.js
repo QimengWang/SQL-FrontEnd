@@ -6,6 +6,7 @@ import Login from '../components/Login';
 import SelectCourse from "../components/SelectCourse";
 import PersonalInformation from "../components/PersonalInformation";
 import Transcript from "../components/Transcript";
+import classTable from "../components/classTable";
 
 import tHome from '../components/tHome';
 import tPersonalInformation from '../components/tPersonalInformation';
@@ -44,6 +45,11 @@ export default new Router({
           path: '/Transcript',
           name: 'Transcript',
           component: Transcript
+        },
+        {
+          path: '/classTable',
+          name: 'classTable',
+          component: classTable
         }
       ]
     },

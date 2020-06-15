@@ -120,7 +120,7 @@
               }
             }
           },
-        async teaLogin(){
+        async teaLogin(){np
           if(this.tea.id === '' || this.tea.password === ''){
             this.$Notice.error({
               title: '工号或密码不能为空！',

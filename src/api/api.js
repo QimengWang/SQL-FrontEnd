@@ -11,6 +11,10 @@ export function personalInfo() {
   return axios.get('/api/PersonalInformation/');
 }
 
+export function classTable() {
+  return axios.get('/api/student/classtable/');
+}
+
 export function selectCourse(action,info) {
   if(action === 'list_course') {
     return axios.get(`/api/student/select_course/?action=${action}`);
