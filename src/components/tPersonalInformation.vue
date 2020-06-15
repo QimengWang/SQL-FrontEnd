@@ -54,7 +54,7 @@
   .container {
     width: calc(100% - 200px);
     height: 100%;
-    /*width: 100%;*/
+    background-color: whitesmoke;
   }
 
   >>>.el-card {

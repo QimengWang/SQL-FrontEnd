@@ -47,7 +47,7 @@
 
 <style scoped>
   .container {
-    height: 100%;
+    height: calc(100vh - 60px);
     width: calc(100% - 200px);
     background-color: whitesmoke;
   }
@@ -66,7 +66,9 @@
   }
 
   >>> .el-card {
-    margin: 50px 50px 180px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
     color: #333333;
   }
   </style>
