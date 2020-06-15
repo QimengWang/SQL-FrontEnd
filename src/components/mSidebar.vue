@@ -28,7 +28,7 @@
           </div>
         </el-menu-item>
       </router-link>
-      <router-link to="">
+      <router-link to="/TeacherManagement">
         <el-menu-item index="3">
           <div>
             <img src="../assets/select.png" class="image"/>

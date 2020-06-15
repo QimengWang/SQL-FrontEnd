@@ -15,6 +15,7 @@ import GradeManagement from '../components/GradeManagement';
 import mHome from '../components/mHome';
 import mPersonalInformation from '../components/mPersonalInformation';
 import StudentManagement from "../components/StudentManagement";
+import TeacherManagement from "../components/TeacherManagement";
 
 Vue.use(Router);
 
@@ -86,7 +87,12 @@ export default new Router({
           path: '/StudentManagement',
           name: 'StudentManagement',
           component: StudentManagement
-        }
+        },
+        {
+          path: '/TeacherManagement',
+          name: 'TeacherManagement',
+          component: TeacherManagement
+        },
       ]
     },
   ]

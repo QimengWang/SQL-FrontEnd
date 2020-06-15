@@ -81,3 +81,18 @@ export function listStudents(action, data) {
     return axios.post('/api/admin/student_info/',{action: action, studentid: data.studentId});
   }
 }
+
+export function listTeachers(action, data) {
+  if(action === 'list_teachers') {
+    return axios.get(`/api/admin/teacher_info/?action=${action}`)
+  }
+  if(action === 'alter_info') {
+    return axios.post('/api/admin/teacher_info/',{action: action, teacherid: data.teacherId, newdata: data.newData});
+  }
+  if(action === 'add_teacher') {
+    return axios.post('/api/admin/teacher_info/',{action: action, data: data});
+  }
+  if(action === 'del_teacher') {
+    return axios.post('/api/admin/teacher_info/',{action: action, teacherid: data.teacherId});
+  }
+}
