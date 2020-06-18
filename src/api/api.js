@@ -112,4 +112,7 @@ export function listCourses(action, data) {
   if(action === 'del_course') {
     return axios.post('api/admin/course_info/',{action: action, courseid: data});
   }
+  if(action === 'list_course') {
+    return axios.post('/api/admin/course_info',{action: action, yx:data});
+  }
 }

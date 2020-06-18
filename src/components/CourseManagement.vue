@@ -2,8 +2,90 @@
     <div class="container">
       <el-card>
         <h1>课程管理</h1>
-        <el-button type="primary" @click="addFormVisible = true">开课</el-button>
-        <el-button type="primary" @click="delCourse">删除课程</el-button>
+        <div style="margin-top: 30px; text-align: left;">
+          <el-form ref="form" :inline="true" style="width: 100%">
+            <el-form-item>
+              <h3>请选择院系名：</h3>
+            </el-form-item>
+            <el-form-item>
+              <el-select v-model="yx" placeholder="请选择">
+                <el-option
+                  v-for="item in options"
+                  :key="item.yx"
+                  :label="item.yx"
+                  :value="item.yx">
+                </el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="getCourses">确定</el-button>
+            </el-form-item>
+          </el-form>
+        </div>
+
+        <el-table
+          :data="courseInfo"
+          style="width: 100%; margin-top: 10px;">
+          <el-table-column
+            prop="kh"
+            label="课号"
+            width="120">
+          </el-table-column>
+          <el-table-column
+            prop="km"
+            label="课名"
+            width="120">
+          </el-table-column>
+          <el-table-column
+            prop="xf"
+            label="学分"
+            width="80">
+          </el-table-column>
+          <el-table-column
+            prop="gh"
+            label="工号"
+            width="80">
+          </el-table-column>
+          <el-table-column
+            prop="yx"
+            label="院系"
+            width="120">
+          </el-table-column>
+          <el-table-column
+            prop="rkls"
+            label="任课老师"
+            width="100">
+          </el-table-column>
+          <el-table-column
+            prop="sksj"
+            label="上课时间"
+            width="100">
+          </el-table-column>
+          <el-table-column
+            prop="xkrs"
+            label="选课人数"
+            width="80">
+          </el-table-column>
+          <el-table-column
+            prop="xzrs"
+            label="限制人数"
+            width="80">
+          </el-table-column>
+          <el-table-column
+            fixed="right"
+            label="操作"
+            width="100">
+            <template slot-scope="scope">
+              <el-button @click="openUpdateForm(scope.row)" type="text" size="small" style="font-weight: bold">修改</el-button>
+              <el-button @click="delCourse(scope.row)" type="text" size="small" style="font-weight: bold">删除</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+
+        <div style="float: left">
+          <el-button style="margin-top: 30px" type="primary" @click="addFormVisible = true">开课</el-button>
+        </div>
+
       </el-card>
 
       <Modal
@@ -35,7 +117,7 @@
 </template>
 
 <script>
-    import {listCourses} from '../api/api'
+    import {listCourses, getDepartment} from '../api/api'
     export default {
       name: "CourseManagement",
       data() {
@@ -49,10 +131,22 @@
             sksj: '',
             xzrs: ''
           },
+          courseInfo: [{
+
+          }],
+          options: [{
+
+          }],
 
         }
       },
       methods: {
+        async getDepartments () {
+          this.options = (await getDepartment).data.retlist;
+        },
+        async getCourses () {
+
+        },
         openAddForm () {
           this.addFormVisible = true;
         },
@@ -71,15 +165,18 @@
             });
           }
         },
-        async delCourse () {
-          this.$Notice.error({
-            title: "功能尚未实现！",
-            duration: 2,
-          });
+        async delCourse (row) {
+          const r = (await listCourses('del_course', row.kh)).data;
+          if(r.ret === 0) {
+            this.$Notice.success({
+              title: r.msg,
+              duration: 2,
+            });
+          }
         }
       },
       mounted() {
-
+        this.getDepartments();
       }
     }
 </script>
@@ -96,7 +193,4 @@
     padding: 30px 70px;
   }
 
-  >>>.el-button {
-    margin-top: 10px;
-  }
 </style>
