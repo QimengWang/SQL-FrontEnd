@@ -34,6 +34,10 @@ export function getGrades() {
   return axios.get('/api/student/list_grade/');
 }
 
+export function changePassword(data) {
+  return axios.post('/api/student/password/',{oldpassword: data.oldPassword, newpassword: data.newPassword});
+}
+
 // For teacher:
 export function teaLogin(tea) {
   return axios.post('/api/teacher/sign/',{teacherid:tea.id, password:tea.password});
@@ -56,6 +60,10 @@ export function gradeManage(action,data) {
   if(action === 'grade_distribution') {
     return axios.post('api/teacher/GradeManage/', {action:action, kh: data});
   }
+}
+
+export function changeTeaPassword(data) {
+  return axios.post('/api/teacher/password/',{oldpassword: data.oldPassword, newpassword: data.newPassword});
 }
 
 //For manager

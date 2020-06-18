@@ -15,18 +15,34 @@
         <span>退出</span>
       </div>
       </el-menu-item>
-      <el-menu-item index="3" style="float: right">
-        <div style="width: 120px">
+
+      <el-submenu index="3" style="float: right; width: 180px">
+        <template slot="title">
           <img src="../assets/mine.png" class="image2" />
           <span>{{gh}} {{name}}</span>
-        </div>
-      </el-menu-item>
+        </template>
+        <el-menu-item index="2-1" @click="alterFormVisible = true">修改密码</el-menu-item>
+      </el-submenu>
     </el-menu>
+
+    <Modal
+      v-model="alterFormVisible"
+      title="修改密码"
+      @on-ok="confirm">
+      <el-form :model="password">
+        <el-form-item label="旧密码:" label-width="45px">
+          <el-input v-model="password.oldPassword" show-password></el-input>
+        </el-form-item>
+        <el-form-item label="新密码:" label-width="45px">
+          <el-input v-model="password.newPassword" show-password></el-input>
+        </el-form-item>
+      </el-form>
+    </Modal>
   </div>
 </template>
 
 <script>
-  import {tPersonalInfo} from "../api/api";
+  import {tPersonalInfo, changeTeaPassword} from "../api/api";
   export default {
     name: 'tNavigation',
     data () {
@@ -34,6 +50,11 @@
         activeIndex: '',
         name: '',
         gh: '',
+        alterFormVisible: false,
+        password: {
+          oldPassword: '',
+          newPassword: ''
+        }
       }
     },
     methods:{
@@ -47,6 +68,21 @@
         const d = (await tPersonalInfo()).data;
         this.name = d.xm;
         this.gh = d.gh;
+      },
+      async confirm() {
+        const r = (await changeTeaPassword(this.password)).data;
+        if(r.ret === 0) {
+          this.$Notice.success({
+            title: r.msg,
+            duration: 2,
+          });
+        }
+        else {
+          this.$Notice.error({
+            title: r.msg,
+            duration: 2,
+          });
+        }
       }
     },
     async mounted() {
@@ -67,7 +103,7 @@
   }
 
   .image2 {
-    height: 12%;
+    height: 26%;
     width: 12%;
   }
 </style>
