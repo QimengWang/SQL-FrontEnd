@@ -5,7 +5,8 @@
     <el-table
       :data="stuInfo"
       tooltip-effect="dark"
-      style="width: 100%; margin-top: 30px">
+      style="width: 100%; margin-top: 30px"
+      id="table">
       <el-table-column
         prop="xh"
         label="学号"
@@ -46,6 +47,7 @@
       </el-table-column>
     </el-table>
     <el-button type="primary" style="float: left; margin-top: 30px" @click="openAddForm">添加</el-button>
+    <el-button type="primary" style="float: left; margin-top: 30px;margin-left:20px" @click="exportExcel">导出</el-button>
   </el-card>
 
   <Modal
@@ -107,7 +109,9 @@
 
 <script>
   import {listStudents} from '../api/api'
-    export default {
+  import FileSaver from 'file-saver'
+  import XLSX from 'xlsx'
+  export default {
       name: "StudentManagement",
       data () {
         return {
@@ -152,6 +156,27 @@
         }
       },
       methods: {
+        exportExcel: function () {
+          /* generate workbook object from table */
+          // 判断要导出的节点中是否有fixed的表格，如果有，转换excel时先将该dom移除，然后append回去，
+          let fix =document.querySelector('.el-table__fixed-right');
+          console.log(fix);
+          let wb;
+          if (fix) { //判断要导出的节点中是否有fixed的表格，如果有，转换excel时先将该dom移除，然后append回去
+            wb = XLSX.utils.table_to_book(document.querySelector('#table').removeChild(fix));
+            document.querySelector('#table').appendChild(fix);
+          } else {
+            wb = XLSX.utils.table_to_book(document.querySelector('#table'));
+          }
+          let wbout = XLSX.write(wb, {bookType: 'xlsx', bookSST: true, type: 'array'})
+          try {
+            FileSaver.saveAs(new Blob([wbout], {type: 'application/octet-stream'}), 'studentinfo.xlsx')
+          } catch (e) {
+            if (typeof console !== 'undefined') console.log(e, wbout)
+          }
+          return wbout
+        },
+
         async getStuInfo () {
           this.action = 'list_students';
           let d = (await listStudents(this.action)).data;
@@ -256,8 +281,9 @@
       },
       async mounted () {
         this.getStuInfo();
-      }
-    }
+      },
+
+  }
 </script>
 
 <style scoped>

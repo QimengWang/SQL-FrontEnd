@@ -15,10 +15,13 @@
   "dependencies": {
     "echarts": "^4.6.0",
     "element-ui": "^2.13.0",
+    "file-save": "^0.2.0",
+    "file-saver": "^2.0.2",
     "iview": "^3.5.4",
     "vue": "^2.5.2",
     "vue-print-nb": "^1.5.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "xlsx": "^0.16.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
