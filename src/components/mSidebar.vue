@@ -38,7 +38,7 @@
           </div>
         </el-menu-item>
       </router-link>
-      <router-link to="">
+      <router-link to="/CourseManagement">
         <el-menu-item index="4">
           <div>
             <img src="../assets/select.png" class="image"/>

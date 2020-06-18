@@ -16,6 +16,7 @@ import mHome from '../components/mHome';
 import mPersonalInformation from '../components/mPersonalInformation';
 import StudentManagement from "../components/StudentManagement";
 import TeacherManagement from "../components/TeacherManagement";
+import CourseManagement from "../components/CourseManagement";
 
 Vue.use(Router);
 
@@ -93,6 +94,11 @@ export default new Router({
           name: 'TeacherManagement',
           component: TeacherManagement
         },
+        {
+          path: '/CourseManagement',
+          name: 'CourseManagement',
+          component: CourseManagement
+        }
       ]
     },
   ]

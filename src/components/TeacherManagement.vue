@@ -77,7 +77,7 @@
     <Modal
       v-model="addFormVisible"
       title="增加教师"
-      @on-ok="addTeachers">
+      @on-ok="addTeacher">
       <el-form :model="addInfo">
         <el-form-item label="工号:" label-width="45px">
           <el-input v-model="addInfo.gh"></el-input>
@@ -207,7 +207,7 @@
       async openAddForm () {
         this.addFormVisible = true;
       },
-      async addTeachers () {
+      async addTeacher () {
         this.action = 'add_teacher';
         let r = (await listTeachers(this.action, this.addInfo)).data;
         if (r.ret === 0) {
@@ -219,7 +219,7 @@
         }
         else {
           this.$Notice.error({
-            title: "添加失败！",
+            title: r.message,
             duration: 2,
           });
         }
@@ -249,7 +249,7 @@
 
       },
     },
-    async mounted () {
+    mounted () {
       this.getTeaInfo();
     }
   }
