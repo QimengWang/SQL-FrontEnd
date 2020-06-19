@@ -8,12 +8,12 @@
               <h3>请选择院系名：</h3>
             </el-form-item>
             <el-form-item>
-              <el-select v-model="yx" placeholder="请选择">
+              <el-select v-model="yxm" placeholder="请选择">
                 <el-option
                   v-for="item in options"
-                  :key="item.yx"
-                  :label="item.yx"
-                  :value="item.yx">
+                  :key="item.yxm"
+                  :label="item.yxm"
+                  :value="item.yxm">
                 </el-option>
               </el-select>
             </el-form-item>
@@ -113,6 +113,32 @@
           </el-form-item>
         </el-form>
       </Modal>
+
+      <Modal
+        v-model="updateFormVisible"
+        title="修改课程信息"
+        @on-ok="alterCourse">
+        <el-form :model="updateInfo">
+          <el-form-item label="课号:" label-width="45px">
+            <el-input v-model="updateInfo.kh"></el-input>
+          </el-form-item>
+          <el-form-item label="课名:" label-width="45px">
+            <el-input v-model="updateInfo.km"></el-input>
+          </el-form-item>
+          <el-form-item label="学分:" label-width="45px">
+            <el-input v-model="updateInfo.xf"></el-input>
+          </el-form-item>
+          <el-form-item label="工号:" label-width="45px">
+            <el-input v-model="updateInfo.gh"></el-input>
+          </el-form-item>
+          <el-form-item label="上课时间:" label-width="45px">
+            <el-input v-model="updateInfo.sksj"></el-input>
+          </el-form-item>
+          <el-form-item label="限制人数:" label-width="45px">
+            <el-input v-model="updateInfo.xzrs"></el-input>
+          </el-form-item>
+        </el-form>
+      </Modal>
     </div>
 </template>
 
@@ -122,6 +148,7 @@
       name: "CourseManagement",
       data() {
         return {
+          yxm: '',
           addFormVisible: false,
           addInfo: {
             kh: '',
@@ -137,18 +164,29 @@
           options: [{
 
           }],
+          updateFormVisible: false,
+          updateInfo: {
+
+          },
 
         }
       },
       methods: {
         async getDepartments () {
-          this.options = (await getDepartment).data.retlist;
+          this.options = (await getDepartment('list_yx')).data.retyxlist;
         },
         async getCourses () {
-
+          this.courseInfo = (await listCourses('list_course', this.yxm)).data.retlist;
         },
-        openAddForm () {
-          this.addFormVisible = true;
+        openUpdateForm (row) {
+          this.updateInfo = JSON.parse(JSON.stringify(row));//深拷贝
+          this.updateFormVisible = true;
+        },
+        async alterCourse () {
+          this.$Notice.error({
+            title: '功能尚未实现!',
+            duration: 2,
+          });
         },
         async addCourse () {
           let r = (await listCourses('add_course', this.addInfo)).data;
@@ -157,6 +195,7 @@
               title: r.message,
               duration: 2,
             });
+            this.getCourses();
           }
           else {
             this.$Notice.error({
@@ -172,6 +211,7 @@
               title: r.msg,
               duration: 2,
             });
+            this.getCourses();
           }
         }
       },

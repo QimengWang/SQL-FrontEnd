@@ -39,7 +39,8 @@
       </el-table-column>
       <el-table-column
         fixed="right"
-        label="操作">
+        label="操作"
+        width="100">
         <template slot-scope="scope">
           <el-button @click="openUpdateForm(scope.row)" type="text" size="small" style="font-weight: bold">修改</el-button>
           <el-button @click="deleteStu(scope.row)" type="text" size="small" style="font-weight: bold">删除</el-button>
