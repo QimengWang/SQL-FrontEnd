@@ -120,7 +120,7 @@
         @on-ok="alterCourse">
         <el-form :model="updateInfo">
           <el-form-item label="课号:" label-width="45px">
-            <el-input v-model="updateInfo.kh"></el-input>
+            <el-input v-model="updateInfo.kh" disabled></el-input>
           </el-form-item>
           <el-form-item label="课名:" label-width="45px">
             <el-input v-model="updateInfo.km"></el-input>
@@ -168,7 +168,15 @@
           updateInfo: {
 
           },
+          copy: {
 
+          },
+          data: {
+            kh: '',
+            newData: {
+
+            }
+          }
         }
       },
       methods: {
@@ -179,14 +187,50 @@
           this.courseInfo = (await listCourses('list_course', this.yxm)).data.retlist;
         },
         openUpdateForm (row) {
+          this.copy = row;
           this.updateInfo = JSON.parse(JSON.stringify(row));//深拷贝
           this.updateFormVisible = true;
         },
         async alterCourse () {
-          this.$Notice.error({
-            title: '功能尚未实现!',
-            duration: 2,
-          });
+          let flag = 0;//防止出现没有任何修改但是仍向后端发送请求的情况
+          this.data.kh = this.updateInfo.kh;
+          for (let propName in this.updateInfo) {
+            // console.log(this.updateInfo[propName]);
+            if (this.updateInfo[propName] !== this.copy[propName]) {
+              flag = 1;
+              console.log("new:" + propName + this.updateInfo[propName]);
+              this.data.newData[propName] = this.updateInfo[propName];
+            }
+          }
+          let ret = -1;
+          if(flag === 1) {
+            console.log(this.data.newData);
+            ret = (await listCourses('alter_info', this.data)).data.ret;
+          }
+          if (ret === 0) {
+            console.log("Ok!");
+            this.$Notice.success({
+              title: "修改成功！",
+              duration: 2,
+            });
+            // 遍历data.newData,删除其可枚举属性，防止干扰后续修改
+            for (let p in this.data.newData) {
+              delete this.data.newData[p];
+            }
+            this.getCourses();
+          }
+          else if (ret === -1){
+            this.$Notice.warning({
+              title: "未修改！",
+              duration: 2,
+            });
+          }
+          else {
+            this.$Notice.error({
+              title: "修改失败！",
+              duration: 2,
+            });
+          }
         },
         async addCourse () {
           let r = (await listCourses('add_course', this.addInfo)).data;

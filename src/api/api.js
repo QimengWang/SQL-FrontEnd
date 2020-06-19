@@ -115,6 +115,9 @@ export function listCourses(action, data) {
   if(action === 'list_course') {
     return axios.post('/api/admin/course_info/',{action: action, yx:data});
   }
+  if(action === 'alter_info') {
+    return axios.put('/api/admin/course_info/',{action: action, courseid: data.kh, newdata: data.newData});
+  }
 }
 
 export function getDepartment(action) {
