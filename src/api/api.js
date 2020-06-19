@@ -120,3 +120,15 @@ export function listCourses(action, data) {
 export function getDepartment(action) {
   return axios.post('api/admin/yx_info/',{action: action});
 }
+
+export function delDepartment(action, id) {
+  return axios.post('api/admin/yx_info/',{action: action, yxid: id});
+}
+
+export function addDepartment(action, data) {
+  return axios.post('api/admin/yx_info/',{action: action, data: data});
+}
+
+export function alterDepartment(action, data) {
+  return axios.post('api/admin/yx_info/',{action: action, yxid:data.yxh, newdata: data.newData});
+}
