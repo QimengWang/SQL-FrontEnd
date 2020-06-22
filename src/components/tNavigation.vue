@@ -25,39 +25,73 @@
       </el-submenu>
     </el-menu>
 
-    <Modal
-      v-model="alterFormVisible"
-      title="修改密码"
-      @on-ok="confirm">
-      <el-form :model="password">
-        <el-form-item label="旧密码:" label-width="45px">
-          <el-input v-model="password.oldPassword" show-password></el-input>
+    <el-dialog title="修改密码" label-width="45px" :visible.sync="alterFormVisible" :append-to-body="true">
+    <el-form :model="password" ref="password" status-icon :rules="rules">
+        <el-form-item label="旧密码:">
+          <el-input type="password" v-model="oldPwd" @blur="verifyPwd" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="新密码:" label-width="45px">
-          <el-input v-model="password.newPassword" show-password></el-input>
+        <el-form-item label="新密码:" prop="newPwd">
+          <el-input type="password" v-model="password.newPwd" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="确认新密码:" prop="checkNewPwd">
+          <el-input type="password" v-model="password.checkNewPwd" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="confirm('password')">提交</el-button>
         </el-form-item>
       </el-form>
-    </Modal>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-  import {tPersonalInfo, changeTeaPassword} from "../api/api";
+  import {tPersonalInfo, changeTeaPassword, verifyPwd} from "../api/api";
   export default {
     name: 'tNavigation',
     data () {
+      let validatePass = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请输入密码'));
+        } else {
+          if (this.password.checkNewPwd !== '') {
+            this.$refs.password.validateField('checkNewPwd');
+          }
+          callback();
+        }
+      };
+      let validatePass2 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请再次输入密码'));
+        } else if (value !== this.password.newPwd) {
+          callback(new Error('两次输入密码不一致!'));
+        } else {
+          callback();
+        }
+      };
+
       return {
         activeIndex: '',
         name: '',
         gh: '',
         alterFormVisible: false,
+        oldPwd: '',
         password: {
-          oldPassword: '',
-          newPassword: ''
-        }
+          newPwd: '',
+          checkNewPwd: ''
+        },
+        rules: {
+          newPwd: [{validator: validatePass, trigger: 'blur'}],
+          checkNewPwd: [{validator: validatePass2, trigger: 'blur'}]
+        },
       }
     },
     methods:{
+      async verifyPwd () {
+        const f = (await verifyPwd(this.oldPwd)).data.ret;
+        if(f === 1) {
+          alert("旧密码输入错误，请重新输入！");
+        }
+      },
       handleSelect(key, keyPath) {
         // console.log(key, keyPath);
       },
@@ -69,20 +103,22 @@
         this.name = d.xm;
         this.gh = d.gh;
       },
-      async confirm() {
-        const r = (await changeTeaPassword(this.password)).data;
-        if(r.ret === 0) {
-          this.$Notice.success({
-            title: r.msg,
-            duration: 2,
-          });
-        }
-        else {
-          this.$Notice.error({
-            title: r.msg,
-            duration: 2,
-          });
-        }
+      async confirm(password) {
+        this.$refs[password].validate(async (valid) => {
+          if (valid) {
+            const r = (await changeTeaPassword(this.password)).data;
+            this.alterFormVisible = false;
+            if(r.ret === 0) {
+              this.$Notice.success({
+                title: r.msg,
+                duration: 2,
+              });
+            }
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
       }
     },
     async mounted() {

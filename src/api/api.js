@@ -34,8 +34,12 @@ export function getGrades() {
   return axios.get('/api/student/list_grade/');
 }
 
+export function verifyOldPwd(d) {
+  return axios.post('/api/student/password/verify',{oldpassword: d});
+}
+
 export function changePassword(data) {
-  return axios.post('/api/student/password/',{oldpassword: data.oldPassword, newpassword: data.newPassword});
+  return axios.post('/api/student/password/alter',{newpassword: data.newPwd, newpwdagain: data.checkNewPwd});
 }
 
 // For teacher:
@@ -62,8 +66,13 @@ export function gradeManage(action,data) {
   }
 }
 
+export function verifyPwd(d) {
+  return axios.post('/api/teacher/password/verify',{oldpassword: d});
+
+}
+
 export function changeTeaPassword(data) {
-  return axios.post('/api/teacher/password/',{oldpassword: data.oldPassword, newpassword: data.newPassword});
+  return axios.post('/api/teacher/password/alter',{newpassword: data.newPwd, newpwdagain: data.checkNewPwd});
 }
 
 //For manager
