@@ -42,7 +42,7 @@
         <router-link to="/GradeTrend">
           <el-menu-item index="4">
             <div>
-              <img src="../assets/transcript.png" class="image" />
+              <img src="../assets/zs.png" class="image" />
               <span style="float: left; margin-left: 2%">
                 成绩走势
               </span>
@@ -52,7 +52,7 @@
         <router-link to="/classTable">
           <el-menu-item index="5">
             <div>
-              <img src="../assets/transcript.png" class="image" />
+              <img src="../assets/schedule.png" class="image" />
               <span style="float: left; margin-left: 2%">
                 我的课表
               </span>

@@ -21,7 +21,7 @@
       <router-link to="/StudentManagement">
         <el-menu-item index="2">
           <div>
-            <img src="../assets/select.png" class="image"/>
+            <img src="../assets/Management.png" class="image"/>
             <span style="float: left; margin-left: 2%">
                   学生信息管理
             </span>
@@ -31,7 +31,7 @@
       <router-link to="/TeacherManagement">
         <el-menu-item index="3">
           <div>
-            <img src="../assets/select.png" class="image"/>
+            <img src="../assets/Management.png" class="image"/>
             <span style="float: left; margin-left: 2%">
                   教师信息管理
             </span>
@@ -41,7 +41,7 @@
       <router-link to="/CourseManagement">
         <el-menu-item index="4">
           <div>
-            <img src="../assets/select.png" class="image"/>
+            <img src="../assets/course.png" class="image"/>
             <span style="float: left; margin-left: 2%">
                   课程管理
             </span>
@@ -51,7 +51,7 @@
       <router-link to="/TermManagement">
         <el-menu-item index="5">
           <div>
-            <img src="../assets/select.png" class="image"/>
+            <img src="../assets/xq-Management.png" class="image"/>
             <span style="float: left; margin-left: 2%">
                   学期管理
             </span>

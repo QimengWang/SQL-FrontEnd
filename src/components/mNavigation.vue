@@ -23,7 +23,7 @@
       </el-menu-item>
       <el-menu-item index="4" style="float: right; width: 180px">
         <div style="width: 60px">
-          <img src="../assets/out.png" class="image1" />
+          <img src="../assets/xq.png" class="image1" />
           <span>{{curTerm}}学期</span>
         </div>
       </el-menu-item>
