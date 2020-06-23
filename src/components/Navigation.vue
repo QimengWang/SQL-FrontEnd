@@ -23,6 +23,13 @@
         </template>
         <el-menu-item index="2-1" @click="alterFormVisible = true">修改密码</el-menu-item>
       </el-submenu>
+
+      <el-menu-item index="4" style="float: right; width: 180px">
+        <div style="width: 60px">
+          <img src="../assets/out.png" class="image1" />
+          <span>{{curTerm}}学期</span>
+        </div>
+      </el-menu-item>
     </el-menu>
 
     <el-dialog title="修改密码" :visible.sync="alterFormVisible" :append-to-body="true">
@@ -45,7 +52,7 @@
 </template>
 
 <script>
-  import {personalInfo, changePassword, verifyOldPwd} from "../api/api";
+  import {personalInfo, changePassword, verifyOldPwd, getCurTerm} from "../api/api";
 export default {
   name: 'Navigation',
   data () {
@@ -70,6 +77,7 @@ export default {
     };
 
     return {
+      curTerm: '',
       activeIndex: '',
       name: '',
       xh: '',
@@ -122,6 +130,7 @@ export default {
   },
   async mounted() {
     this.setName();
+    this.curTerm = (await getCurTerm('cur_term')).data.curterm;
   }
 }
 </script>

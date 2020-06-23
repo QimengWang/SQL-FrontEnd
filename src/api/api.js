@@ -144,3 +144,7 @@ export function setTerm(action, data) {
 export function addTerm(action, data) {
   return axios.post('/api/admin/term/',{action: action, newterm: data});
 }
+
+export function getCurTerm(action) {
+  return axios.get(`/api/admin/term/?action=${action}`);
+}

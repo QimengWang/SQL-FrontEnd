@@ -63,6 +63,7 @@
               title: r.message,
               duration: 2,
             });
+            location.reload();
           }
         },
         async add () {

@@ -21,16 +21,23 @@
           <span>{{gh}} {{name}}</span>
         </div>
       </el-menu-item>
+      <el-menu-item index="4" style="float: right; width: 180px">
+        <div style="width: 60px">
+          <img src="../assets/out.png" class="image1" />
+          <span>{{curTerm}}学期</span>
+        </div>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script>
-  import {mPersonalInfo} from "../api/api";
+  import {mPersonalInfo, getCurTerm} from "../api/api";
   export default {
     name: 'mNavigation',
     data () {
       return {
+        curTerm: '',
         activeIndex: '',
         name: '',
         gh: '',
@@ -51,6 +58,7 @@
     },
     async mounted() {
       this.setName();
+      this.curTerm = (await getCurTerm('cur_term')).data.curterm;
     }
   }
 </script>
