@@ -106,6 +106,7 @@
       // console.log(this.array);
       this.grades.sort(this.adjust);
       // console.log(this.grades);
+
       this.drawChart();
       this.i = 0 ;
       this.array = [];
