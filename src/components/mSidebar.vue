@@ -14,7 +14,7 @@
             <img src="../assets/user.png" class="image" />
             <span style="float: left; margin-left: 2%">
                   个人信息
-                </span>
+            </span>
           </div>
         </el-menu-item>
       </router-link>
@@ -24,7 +24,7 @@
             <img src="../assets/select.png" class="image"/>
             <span style="float: left; margin-left: 2%">
                   学生信息管理
-                </span>
+            </span>
           </div>
         </el-menu-item>
       </router-link>
@@ -34,7 +34,7 @@
             <img src="../assets/select.png" class="image"/>
             <span style="float: left; margin-left: 2%">
                   教师信息管理
-                </span>
+            </span>
           </div>
         </el-menu-item>
       </router-link>
@@ -44,7 +44,17 @@
             <img src="../assets/select.png" class="image"/>
             <span style="float: left; margin-left: 2%">
                   课程管理
-                </span>
+            </span>
+          </div>
+        </el-menu-item>
+      </router-link>
+      <router-link to="/TermManagement">
+        <el-menu-item index="5">
+          <div>
+            <img src="../assets/select.png" class="image"/>
+            <span style="float: left; margin-left: 2%">
+                  学期管理
+            </span>
           </div>
         </el-menu-item>
       </router-link>

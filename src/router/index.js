@@ -17,6 +17,7 @@ import mPersonalInformation from '../components/mPersonalInformation';
 import StudentManagement from "../components/StudentManagement";
 import TeacherManagement from "../components/TeacherManagement";
 import CourseManagement from "../components/CourseManagement";
+import TermManagement from "../components/TermManagement";
 
 Vue.use(Router);
 
@@ -98,6 +99,11 @@ export default new Router({
           path: '/CourseManagement',
           name: 'CourseManagement',
           component: CourseManagement
+        },
+        {
+          path: '/TermManagement',
+          name: 'TermManagement',
+          component: TermManagement
         }
       ]
     },

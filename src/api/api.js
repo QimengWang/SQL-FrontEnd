@@ -59,10 +59,10 @@ export function gradeManage(action,data) {
     return axios.post('/api/teacher/GradeManage/',{action:action, kh:data});
   }
   if(action === 'post_grade') {
-    return axios.post('api/teacher/GradeManage/',{action:action, xh:data.xh, kh:data.kh, zpcj:data.zpcj});
+    return axios.post('/api/teacher/GradeManage/',{action:action, xh:data.xh, kh:data.kh, zpcj:data.zpcj});
   }
   if(action === 'grade_distribution') {
-    return axios.post('api/teacher/GradeManage/', {action:action, kh: data});
+    return axios.post('/api/teacher/GradeManage/', {action:action, kh: data});
   }
 }
 
@@ -119,7 +119,7 @@ export function listCourses(action, data) {
     return axios.post('/api/admin/course_info/',{action: action, data: data});
   }
   if(action === 'del_course') {
-    return axios.post('api/admin/course_info/',{action: action, courseid: data});
+    return axios.post('/api/admin/course_info/',{action: action, courseid: data});
   }
   if(action === 'list_course') {
     return axios.post('/api/admin/course_info/',{action: action, yx:data});
@@ -130,17 +130,17 @@ export function listCourses(action, data) {
 }
 
 export function getDepartment(action) {
-  return axios.post('api/admin/yx_info/',{action: action});
+  return axios.post('/api/admin/yx_info/',{action: action});
 }
 
-export function delDepartment(action, id) {
-  return axios.post('api/admin/yx_info/',{action: action, yxid: id});
+export function getTerms(action) {
+  return axios.get(`/api/admin/term/?action=${action}`);
 }
 
-export function addDepartment(action, data) {
-  return axios.post('api/admin/yx_info/',{action: action, data: data});
+export function setTerm(action, data) {
+  return axios.post('/api/admin/term/',{action: action, curterm: data});
 }
 
-export function alterDepartment(action, data) {
-  return axios.post('api/admin/yx_info/',{action: action, yxid:data.yxh, newdata: data.newData});
+export function addTerm(action, data) {
+  return axios.post('/api/admin/term/',{action: action, newterm: data});
 }
