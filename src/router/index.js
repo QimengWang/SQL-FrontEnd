@@ -7,6 +7,7 @@ import SelectCourse from "../components/SelectCourse";
 import PersonalInformation from "../components/PersonalInformation";
 import Transcript from "../components/Transcript";
 import classTable from "../components/classTable";
+import GradeTrend from "../components/GradeTrend";
 
 import tHome from '../components/tHome';
 import tPersonalInformation from '../components/tPersonalInformation';
@@ -53,6 +54,11 @@ export default new Router({
           path: '/classTable',
           name: 'classTable',
           component: classTable
+        },
+        {
+          path: '/GradeTrend',
+          name: 'GradeTrend',
+          component: GradeTrend
         }
       ]
     },

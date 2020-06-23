@@ -39,8 +39,18 @@
 
             </el-menu-item>
           </router-link>
-        <router-link to="/classTable">
+        <router-link to="/GradeTrend">
           <el-menu-item index="4">
+            <div>
+              <img src="../assets/transcript.png" class="image" />
+              <span style="float: left; margin-left: 2%">
+                成绩走势
+              </span>
+            </div>
+          </el-menu-item>
+        </router-link>
+        <router-link to="/classTable">
+          <el-menu-item index="5">
             <div>
               <img src="../assets/transcript.png" class="image" />
               <span style="float: left; margin-left: 2%">

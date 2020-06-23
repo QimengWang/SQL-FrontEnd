@@ -154,8 +154,8 @@
             this.action = 'grade_distribution';
             const d = (await gradeManage(this.action, this.kh)).data.retlist;
             console.log(d);
-            var dom = document.getElementById('echarts');
-            var myChart = this.echarts.init(dom);
+            let dom = document.getElementById('echarts');
+            let myChart = this.echarts.init(dom);
             // 绘制图表
             myChart.setOption({
               title: {

@@ -42,6 +42,10 @@ export function changePassword(data) {
   return axios.post('/api/student/password/alter',{newpassword: data.newPwd, newpwdagain: data.checkNewPwd});
 }
 
+export function getAllGrade() {
+  return axios.get('/api/student/list_grade/tendance');
+}
+
 // For teacher:
 export function teaLogin(tea) {
   return axios.post('/api/teacher/sign/',{teacherid:tea.id, password:tea.password});
